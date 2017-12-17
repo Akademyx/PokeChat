@@ -13,8 +13,9 @@ class App extends Component {
       showLogin: 'block',
       showSignUp: 'none'
     };
+    this.toggleLogin = this.toggleLogin.bind(this);    
+    this.toggleSignUp = this.toggleSignUp.bind(this);
     this.submitLoginCredentials = this.submitLoginCredentials.bind(this);
-    this.toggleLogin = this.toggleLogin.bind(this);
   }
 
   toggleLogin () {

@@ -31,7 +31,12 @@ class Login extends Component {
 						hintText="Password"
 						hintStyle={styles.errorStyle}
 					/>
-					<FlatButton label="Login" fullWidth={true} onClick={ () => { this.props.submitLoginCredentials('kelly', 'ilovesquirtle', this.props.parentContext) }}/>
+					<FlatButton label="Login" fullWidth={true} onClick={ () => {
+						 this.props.submitLoginCredentials(
+							document.getElementById("nameField").value, 
+							document.getElementById("passwordField").value, 
+						 this.props.parentContext)
+						}}/>
 				</div>
 			</div>
 		</div>
