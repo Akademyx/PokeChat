@@ -3,17 +3,22 @@ import { render } from 'react-dom'
 import styles from './landing.css'
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
-// import {orange500, blue500} from 'material-ui/styles/colors';
+import {orange500, deepOrange500, green500} from 'material-ui/styles/colors';
 import axios from 'axios';
+
+const fieldStyles = {
+	colorOrange: {
+		color: orange500,
+	},
+	colorDeepOrange: {
+		color: deepOrange500,
+	}
+}
 
 class Login extends Component {
 	constructor(props, context) {
 		super(props, context);
 		
-	}
-
-	componentDidMount () {
-		console.log(this.props);
 	}
 	
 	render() {
@@ -24,12 +29,13 @@ class Login extends Component {
 				<TextField
 						id="nameField"
 						hintText="Name"
-						hintStyle={styles.errorStyle}
+						hintStyle={fieldStyles.colorOrange}
 					/>
 					<TextField
 						id="passwordField"
+						type="password"
 						hintText="Password"
-						hintStyle={styles.errorStyle}
+						hintStyle={fieldStyles.colorDeepOrange}
 					/>
 					<FlatButton label="Login" fullWidth={true} onClick={ () => {
 						 this.props.submitLoginCredentials(
@@ -42,6 +48,6 @@ class Login extends Component {
 		</div>
 		)
 	}
-  }
+}
 
 export default Login;

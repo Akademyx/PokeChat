@@ -8,7 +8,9 @@ mongoose.connection.once('open', () => {
 
 const userSchema = new Schema({
   name: String,
-  password: String
+  password: String,
+  pokemon: String,
+  themeColor: String
 });
 
 const User = mongoose.model('User', userSchema); //One document. Naming the columns for it. 

@@ -19,11 +19,12 @@ let UserController = {
 		})
 	},
 	checkCredentials(req, res) {
-		User.findOne({ name: req.body.name }, function (err, result) {
+		// console.log('REQ.BODY USERNAME AND PASSWORD', req.body.name, req.body.password)
+		User.findOne({ name: req.body.name, password: req.body.password }, function (err, result) {
 			if (err) {
 				res.status(400).send(err);
-			}
-			console.log('RESULT', result);
+			} 
+			// console.log('RESULT', result);
 			res.send(result);
 		})
 		// User.find({}, function(err, users) {

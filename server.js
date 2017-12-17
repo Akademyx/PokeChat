@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-//serve landing
+// serve landing
 app.get('/', (req,res) => {
 	res.sendfile('./index.html');
 })
@@ -17,7 +17,7 @@ app.get('/', (req,res) => {
   res.setHeader('content-type', 'text/html; charset=UTF-8');
   res.sendStatus(200);
 })
-//server landing styles
+// server landing styles
 app.get('/style.css', (req,res) => {
 	res.sendfile('./style.css');
 })
@@ -25,7 +25,7 @@ app.get('/style.css', (req,res) => {
   res.setHeader('content-type', 'text/html; charset=UTF-8');
   res.sendStatus(200);
 })
-//server bundle
+// server bundle
 app.get('/build/bundle.js', (req,res) => {
 	res.sendfile('./build/bundle.js');
 })
@@ -34,9 +34,11 @@ app.get('/build/bundle.js', (req,res) => {
   res.sendStatus(200);
 })
 
-//MIDDLEWARE
-//check login credentials
-app.post('/checkCredentials', userController.createUser);
+// MIDDLEWARE
+// check login credentials
+app.post('/checkCredentials', userController.checkCredentials);
+// add user 
+app.post('/addUser', userController.createUser);
 
 app.listen(9000);
 

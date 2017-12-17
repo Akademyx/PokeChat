@@ -36,7 +36,12 @@ class App extends Component {
     })
     .then(function (response) {
       console.log(response);
-      // that.setState({showLogin: 'none'});
+      document.getElementById("nameField").value = '', 
+      document.getElementById("passwordField").value = ''
+      // response data is an empty string this means the user isnt found in the database. 
+      // alert the user of incorrect credentials
+      if (response.data === '') alert ('incorrect password or username');
+      else that.setState({showLogin: 'none'});
     })
     .catch(function (error) {
       console.log(error);

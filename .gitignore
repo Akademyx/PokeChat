@@ -1,2 +1,7 @@
 #dependencies
 /node_modules
+
+#bundle
+bundle.js
+
+build/bundle.js
