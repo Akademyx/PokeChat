@@ -3,17 +3,13 @@ import { render } from 'react-dom'
 import styles from './landing.css'
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
-import {orange500, blue500} from 'material-ui/styles/colors';
+// import {orange500, blue500} from 'material-ui/styles/colors';
 import axios from 'axios';
 
 class Login extends Component {
     constructor(props, context) {
       super(props, context);
     
-		}
-
-		componentDidMount() {
-			console.log(this.props);
 		}
 
     render() {
@@ -32,7 +28,7 @@ class Login extends Component {
 							hintText="Password"
 							hintStyle={styles.errorStyle}
 						/>
-						<FlatButton label="Login" fullWidth={true} />
+						<FlatButton label="Login" fullWidth={true} onClick={this.props.submitLoginCredentials}/>
 					</div>
 					</div>
 				</div>

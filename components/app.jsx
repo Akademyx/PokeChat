@@ -29,8 +29,10 @@ class App extends Component {
   }		
   submitLoginCredentials (nameVal, passwordVal) {
     axios.post('/checkCredentials', {
-      name: nameVal,
-      password: passwordVal
+      // name: nameVal,
+      name: 'Jenny',      
+      // password: passwordVal
+      password: 'iloveforest'
     })
     .then(function (response) {
       console.log(response);
@@ -45,7 +47,7 @@ class App extends Component {
       <div>
         <div id='loginWrapper' style={{display: this.state.showLogin}}>
           <MuiThemeProvider>
-            <Login submitLoginCredentials = {this.state.submitLoginCredentials}/>
+            <Login submitLoginCredentials = {this.submitLoginCredentials}/>
           </MuiThemeProvider>
         </div>
         <div id='signUpWrapper' style={{display: this.state.showSignUp}}>

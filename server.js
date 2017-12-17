@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const userController = require('./server-mongoose/controllers/user-controller');
 // const messageController = require('./messages/messageController');
 // const authController = require('./utils/authController');
 // const eventCtrl = require('./server-mongoose/controllers/event-controller');
@@ -40,6 +41,8 @@ app.get('/build/bundle.js', (req,res) => {
     res.setHeader('content-type', 'text/html; charset=UTF-8');
     res.sendStatus(200);
 })
+
+app.post('/checkCredentials', userController.createUser);
 
 // var jsonParser = bodyParser.json();
 
