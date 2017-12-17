@@ -7,33 +7,36 @@ import FlatButton from 'material-ui/FlatButton';
 import axios from 'axios';
 
 class Login extends Component {
-    constructor(props, context) {
-      super(props, context);
-    
-		}
+	constructor(props, context) {
+		super(props, context);
+		
+	}
 
-    render() {
-        return (
-				<div>
-        {/* <div>{'LOGIN'}</div> */}
-				<div className="landingBox">
-					<div id="loginForm">
-						<TextField
-							id="nameField"
-							hintText="Name"
-							hintStyle={styles.errorStyle}
-						/>
-						<TextField
-							id="passwordField"
-							hintText="Password"
-							hintStyle={styles.errorStyle}
-						/>
-						<FlatButton label="Login" fullWidth={true} onClick={this.props.submitLoginCredentials}/>
-					</div>
-					</div>
+	componentDidMount () {
+		console.log(this.props);
+	}
+	
+	render() {
+		return (
+		<div>
+			<div className="landingBox">
+				<div id="loginForm">
+				<TextField
+						id="nameField"
+						hintText="Name"
+						hintStyle={styles.errorStyle}
+					/>
+					<TextField
+						id="passwordField"
+						hintText="Password"
+						hintStyle={styles.errorStyle}
+					/>
+					<FlatButton label="Login" fullWidth={true} onClick={ () => { this.props.submitLoginCredentials('kelly', 'ilovesquirtle', this.props.parentContext) }}/>
 				</div>
-        )
-      }
+			</div>
+		</div>
+		)
+	}
   }
 
 export default Login;
