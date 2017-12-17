@@ -41,7 +41,7 @@ class App extends Component {
       // response data is an empty string this means the user isnt found in the database. 
       // alert the user of incorrect credentials
       if (response.data === '') alert ('incorrect password or username');
-      // else that.setState({showLogin: 'none'});
+      else that.setState({showLogin: 'none'});
     })
     .catch(function (error) {
       console.log(error);
