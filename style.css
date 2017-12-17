@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    background-color: rgb(138, 213, 220);
+}
+#loginWrapper {
+    /* text-align: center;
+    margin: auto; */
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 40%;
+    top: 35%; 
+    margin-left: -150px;
+    margin-top: -150px;
+    text-align: center;
+}
+/* .container {
+    padding: 0 2.5%;
+}
+#content {
+    position: absolute;
+    left: 40%;
+    min-width: 300px;
+    background-color: green;
+}  
+#buttonWrapper {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}
+#dashboard-content {
+    position: absolute;
+    left: 40%;
+    min-width: 300px;
+    background-color: purple;
+}  
+#introParagraph {
+    position: absolute;
+    padding-left: 50%;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    border: 1px solid blueviolet;
+    background-color: aquamarine;
+}
+.newsItem {
+    height: 40px;
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    background-color: aquamarine;
+} */
