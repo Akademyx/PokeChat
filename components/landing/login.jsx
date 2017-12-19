@@ -23,31 +23,31 @@ class Login extends Component {
 	
 	render() {
 		return (
-		<div>
-			<div className="landingBox">
-				<div id="loginForm">
-				<TextField
-						id="nameField"
-						hintText="Name"
-						hintStyle={fieldStyles.colorOrange}
-					/>
+			<div>
+				<div className="landingBox">
+					<div id="loginForm">
 					<TextField
-						id="passwordField"
-						type="password"
-						hintText="Password"
-						hintStyle={fieldStyles.colorDeepOrange}
-					/>
-					<FlatButton label="Login" fullWidth={true} onClick={ () => {
-						 this.props.submitLoginCredentials(
-							document.getElementById("nameField").value, 
-							document.getElementById("passwordField").value, 
-						 this.props.parentContext)
-						}}/>
+							id="nameField"
+							hintText="Name"
+							hintStyle={fieldStyles.colorOrange}
+						/>
+						<TextField
+							id="passwordField"
+							type="password"
+							hintText="Password"
+							hintStyle={fieldStyles.colorDeepOrange}
+						/>
+						<FlatButton label="Login" fullWidth={true} onClick={ () => {
+							this.props.submitLoginCredentials(
+								document.getElementById("nameField").value, 
+								document.getElementById("passwordField").value, 
+							this.props.parentContext)
+							}}/>
+					</div>
 				</div>
 			</div>
-		</div>
-		)
-	}
+				)
+		}
 }
 
 export default Login;

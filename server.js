@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// serve landing
+// serve landing (serves login and signup components (idea: separate login and signup to different routes instead of conditionally rendering?))
 app.get('/', (req,res) => {
 	res.sendfile('./index.html');
 })
@@ -17,7 +17,7 @@ app.get('/', (req,res) => {
   res.setHeader('content-type', 'text/html; charset=UTF-8');
   res.sendStatus(200);
 })
-// server landing styles
+// serve landing styles
 app.get('/style.css', (req,res) => {
 	res.sendfile('./style.css');
 })
@@ -25,7 +25,7 @@ app.get('/style.css', (req,res) => {
   res.setHeader('content-type', 'text/html; charset=UTF-8');
   res.sendStatus(200);
 })
-// server bundle
+// serve bundle
 app.get('/build/bundle.js', (req,res) => {
 	res.sendfile('./build/bundle.js');
 })
@@ -33,6 +33,13 @@ app.get('/build/bundle.js', (req,res) => {
   res.setHeader('content-type', 'text/html; charset=UTF-8');
   res.sendStatus(200);
 })
+//serve chatRoom
+// app.get('/chatRoom', (req,res) => {
+//   res.sendFile('./components/chatRoom.jsx')
+// })
+// app.get('/chatRoom', (req,res) => {
+//   res.setHeader('content-type', )
+// })
 
 // MIDDLEWARE
 // check login credentials

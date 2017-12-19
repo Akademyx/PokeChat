@@ -10,7 +10,7 @@
     "gulp": "node_modules/.bin/gulp",
     "nebulis": "node ./node_modules/nebulis-endpoint/index.js"
   },
-  "author": "Kelly Gilliam https://github.com/bit-dash <kgilliamcode@gmail.com>",
+  "author": "Kelly Gilliam https://github.com/pokechat <kgilliamcode@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.2",
@@ -27,6 +27,8 @@
     "material-ui": "^0.20.0",
     "mongoose": "^4.12.1",
     "nebulis-endpoint": "^0.4.2",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "reactify": "^1.1.1",
     "request": "^2.83.0",
     "vinyl-source-stream": "^1.1.0",
