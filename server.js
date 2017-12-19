@@ -47,6 +47,10 @@ app.post('/checkCredentials', userController.checkCredentials);
 // add user 
 app.post('/addUser', userController.createUser);
 
+app.post('/redirectOnLogin', (req,res) => {
+  res.redirect('/chatroom');
+})
+
 app.listen(9000);
 
 module.exports = app;
