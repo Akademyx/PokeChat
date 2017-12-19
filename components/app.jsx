@@ -64,5 +64,6 @@ class App extends Component {
     }
 }
 
-render(<App />, document.getElementById('content'));
+// render(<App />, document.getElementById('content'));
+export default App;
 

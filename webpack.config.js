@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './components/app.jsx',
+  entry: './index.js',
   output: {
     path: path.join(__dirname, './build'),
     publicPath: './build',
