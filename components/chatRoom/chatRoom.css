@@ -3,3 +3,17 @@
 	height: 100px;
 	background-color: purple;
 }
+
+#usersContainer {
+	/* margin: 0;
+	width: 50%; */
+	/* text-align: center; */
+	position: relative;
+	top: 100px;
+	margin: auto;
+	width: 200;
+  /* justify-content: center; */
+	/* align-items: center; */ 
+	/* width: 50%;
+	height: 50%; */ 
+}

@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import axios from 'axios';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/TextField';
+import styles from './chatRoom.css';
 
 class ChatRoom extends Component {
   constructor(props, context) {
@@ -30,8 +31,6 @@ class ChatRoom extends Component {
 		});
 	}
 
-
-
 	componentDidMount () {
 		this.getUsers(this);
 		console.log('PROPS FROM APP', this.props);
@@ -45,14 +44,34 @@ class ChatRoom extends Component {
 		let displayUsers = [];
 		for (let i = 0; i < this.state.users.length; i++) {
 			let styles = {
-				backgroundColor: this.state.users[i].themeColor
+				backgroundColor: this.state.users[i].themeColor,
+				minWidth: '30px',
+				maxWidth: '60%',
+				overflowWrap: 'break-word',
+				display: 'inline-block',
+				borderRadius: '25px',
+				padding: '10px',
+				marginRight: '10px',
+				marginBottom: '15px'
 			}
-			displayUsers.push(<div style={ styles } key={ this.state.users[i]._id }>{ this.state.users[i].name }</div>);
+			displayUsers.push(<div style={ styles } key={ this.state.users[i]._id }>{ this.state.users[i].name }</div>,<span>{ this.state.users[i].name }</span>,<br></br>);
 		}
+
+		let headerStyle = {
+			position: 'fixed',
+			zIndex: '1',
+			width: '100%',
+			height: '70px',
+			textAlign: 'center',
+			border: '1px solid',
+			backgroundColor: this.props.user.themeColor
+		}
+
   	return (
 			<div>
-    		<div id="testChatRoomRenderDiv">{ 'CHAT ROOM' }</div>
-				<div id="testUsers">{ displayUsers }</div>
+				{/* <div id="testChatRoomRenderDiv">{ 'CHAT ROOM' }</div> */}
+				<header id='chatHeader' style={ headerStyle }>{ 'POKE CHAT' }</header>
+				<div id="usersContainer">{ displayUsers }</div>
 				<TextField
 							id="messageField"
 							hintText="message"

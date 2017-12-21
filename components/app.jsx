@@ -11,7 +11,7 @@ class App extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      user: null
+      user: null,
     };
   }
 
@@ -27,8 +27,9 @@ class App extends Component {
         </div> */}
         {/* <ChatRoom/> */}
         <Switch>
-          <Route exact path='/' component={Login}/>
-          <Route exact path="/chatroom" render={props => <ChatRoom user={this.state.user} {...props} />} />
+          {/* <Route exact path='/' component={Login}/> */}
+          <Route exact path="/" render={props => <Login user={this.state.user} appContext={this} {...props} />} />
+          <Route exact path="/chatroom" render={props => <ChatRoom user={this.state.user} appContext={this} {...props} />} />
           <Route path='/signup' component={SignUp}/>
           {/* <Route path='/chatroom' component={ChatRoom}/> */}
         </Switch>

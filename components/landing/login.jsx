@@ -44,7 +44,11 @@ class Login extends Component {
 				if (response.data === '') alert ('incorrect password or username');
 				else {
 					// re-render and route to chatroom with react router
+					let appState = that.props.appContext;	
+					// pass user to app (parent) state				
+					appState.setState({user: response.data});
 					that.setState({redirectToChatRoom: true});
+					console.log('APP USER', that.props.user);
 				}
 			})
 			.catch(function (error) {

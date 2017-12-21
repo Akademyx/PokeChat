@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    background-color: rgb(252, 180, 103);
+    /* background-color: rgb(252, 180, 103); */
+    background-color: white;
 }
 #loginWrapper {
     /* text-align: center;
