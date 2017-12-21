@@ -51,7 +51,7 @@ class Login extends Component {
   }
 	
 	render() {
-		// if credentials come back true, redirect to chatroom:
+		// if login credentials come back true, redirect to chatroom:
 		if (this.state.redirectToChatRoom === true) return (<Redirect to='/chatroom'/>);
 		// otherwise render login page
 		else {
@@ -77,6 +77,7 @@ class Login extends Component {
 								this
 							)
 							}}/>
+							<li><Link to='/signup'>First Time? Sign Up!</Link></li>
 					</div>
 				</div>
 			</div>
