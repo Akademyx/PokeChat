@@ -10,7 +10,8 @@ const userSchema = new Schema({
   name: String,
   password: String,
   pokemon: String,
-  themeColor: String
+  themeColor: String,
+  date: { type: Date, default: Date.now}
 });
 
 const User = mongoose.model('User', userSchema); //One document. Naming the columns for it. 
