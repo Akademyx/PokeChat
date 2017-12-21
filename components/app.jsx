@@ -11,8 +11,7 @@ class App extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      showLogin: 'block',
-      showSignUp: 'none'
+      user: null
     };
   }
 
@@ -26,10 +25,12 @@ class App extends Component {
             <ChatRoom/>
           </MuiThemeProvider>
         </div> */}
+        {/* <ChatRoom/> */}
         <Switch>
           <Route exact path='/' component={Login}/>
+          <Route exact path="/chatroom" render={props => <ChatRoom user={this.state.user} {...props} />} />
           <Route path='/signup' component={SignUp}/>
-          <Route path='/chatroom' component={ChatRoom}/>
+          {/* <Route path='/chatroom' component={ChatRoom}/> */}
         </Switch>
       </div>
       )

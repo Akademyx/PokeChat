@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import axios from 'axios';
+import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/TextField';
 
 class ChatRoom extends Component {
   constructor(props, context) {
@@ -28,8 +30,11 @@ class ChatRoom extends Component {
 		});
 	}
 
+
+
 	componentDidMount () {
 		this.getUsers(this);
+		console.log('PROPS FROM APP', this.props);
 	}
 
 	componentDidUpdate () {
@@ -42,12 +47,22 @@ class ChatRoom extends Component {
 			let styles = {
 				backgroundColor: this.state.users[i].themeColor
 			}
-			displayUsers.push(<div style={styles}>{this.state.users[i].name}</div>);
+			displayUsers.push(<div style={ styles } key={ this.state.users[i]._id }>{ this.state.users[i].name }</div>);
 		}
   	return (
 			<div>
-    		<div id="testChatRoomRenderDiv">{'CHAT ROOM'}</div>
+    		<div id="testChatRoomRenderDiv">{ 'CHAT ROOM' }</div>
 				<div id="testUsers">{ displayUsers }</div>
+				<TextField
+							id="messageField"
+							hintText="message"
+						/>
+						<FlatButton label="Login" fullWidth={true} onClick={ () => {
+							this.addMessage(
+								document.getElementById("messageField").value, 
+								this
+							)
+							}}/>
 			</div>
     	)
   }
