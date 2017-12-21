@@ -69,7 +69,7 @@ class SignUp extends Component {
 	
 	render() {
 		// if login credentials come back true, redirect to chatroom:
-		if (this.state.redirectToChatRoom === true) return (<Redirect to='/chatroom'/>);
+    if (this.state.redirectToChatRoom === true) return (<Redirect to='/chatroom'/>);
 		// otherwise render login page
 		else {
 		return (
@@ -94,7 +94,7 @@ class SignUp extends Component {
 								this
 							)
 							}}/>
-							<li><Link to='/login'>Already a PokeChat user? Login!</Link></li>
+							<li><Link to='/'>Already a PokeChat user? Login!</Link></li>
               <button id='red' onClick={ () => { this.addColor('red') }}></button>
               <button id='blue' onClick={ () => { this.addColor('blue') }}></button>
               <button id='green' onClick={ () => { this.addColor('green') }}></button>

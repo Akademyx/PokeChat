@@ -4,6 +4,7 @@
 	background-image: url('https://static1.e926.net/data/8b/22/8b22c2b446f9f539693c305d7e599ef6.gif');
 	background-size: 100% 100%;
 	margin: auto;
+	position: relative;
 	width: 500px;
 	height: 500px;
 	border: 1px grey solid;
@@ -12,7 +13,7 @@
 
 #loginForm {
 	margin: auto;
-	width: 100%;
+	width: 50%;
 	height: 50%;
 }
 
