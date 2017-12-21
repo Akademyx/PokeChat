@@ -30,12 +30,15 @@ let UserController = {
 			} 
 			res.send(result);
 		})
-		// User.find({}, function(err, users) {
-		//   res.status(200);
-		//   res.setHeader('Content-type', 'application/json');
-		//   res.end(JSON.stringify(users));
-		// });
 	},
+	getAllUsers(req, res) {
+		User.find({}, function(err, users) {
+		  res.status(200);
+		  res.setHeader('Content-type', 'application/json');
+			res.end(JSON.stringify(users));
+			console.log(users);
+		});
+	}
 };
 
 
