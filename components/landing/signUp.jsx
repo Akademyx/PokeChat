@@ -34,6 +34,7 @@ class SignUp extends Component {
 	signUpUser (nameVal, passwordVal, that) {
     if (this.state.userColor === null) alert('choose a color for your theme!');
     else if (this.state.userPokemon === null) alert('choose a pokemon!');
+    else if (nameVal === '' || passwordVal === '') alert('please enter a name and password!');
     else {
       axios.post('/addUser', {
         name: nameVal,
@@ -94,19 +95,23 @@ class SignUp extends Component {
 								this
 							)
 							}}/>
-							<li><Link to='/'>Already a PokeChat user? Login!</Link></li>
-              <button id='red' onClick={ () => { this.addColor('red') }}></button>
-              <button id='blue' onClick={ () => { this.addColor('blue') }}></button>
-              <button id='green' onClick={ () => { this.addColor('green') }}></button>
-              <button id='purple' onClick={ () => { this.addColor('purple') }}></button>
-              <button id='orange' onClick={ () => { this.addColor('orange') }}></button>
-              <br></br>
-              <button id='charmander' onClick={ () => { this.addPokemon('charizard') }}></button>
-              <button id='squirtle' onClick={ () => { this.addPokemon('squirtle') }}></button>
-              <button id='raichu' onClick={ () => { this.addPokemon('raichu') }}></button>
-              <button id='bulbasaur' onClick={ () => { this.addPokemon('bulbasaur') }}></button>
-              <button id='onyx' onClick={ () => { this.addPokemon('onyx') }}></button>
+              <FlatButton label='Already a PokeChat User?' containerElement={<Link to="/" />} linkButton={true}/>
 					</div>
+          <div id="colorAndPokemonWrapper">
+            <button id='charmander' onClick={ () => { this.addPokemon('charizard') }}></button>
+            <button id='squirtle' onClick={ () => { this.addPokemon('squirtle') }}></button>
+            <button id='raichu' onClick={ () => { this.addPokemon('raichu') }}></button>
+            <button id='bulbasaur' onClick={ () => { this.addPokemon('bulbasaur') }}></button>
+            <button id='onyx' onClick={ () => { this.addPokemon('onyx') }}></button>
+          </div>
+          <br></br>
+          <div>
+          <button id='red' onClick={ () => { this.addColor('red') }}></button>
+            <button id='blue' onClick={ () => { this.addColor('blue') }}></button>
+            <button id='green' onClick={ () => { this.addColor('green') }}></button>
+            <button id='purple' onClick={ () => { this.addColor('purple') }}></button>
+            <button id='orange' onClick={ () => { this.addColor('orange') }}></button>
+          </div>
 				</div>
 			</div>
 				)

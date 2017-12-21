@@ -17,12 +17,22 @@
 	height: 50%;
 }
 
+#colorAndPokemonWrapper {
+	margin: auto;	
+}
+
 #red {
 	background-color: red;
 	height: 30px;
 	width: 30px;
 	border-radius: 25px;
 	display: inline-block;
+	position:absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 } 
 
 #blue {
@@ -31,6 +41,12 @@
 	width: 30px;
 	border-radius: 25px;
 	display: inline-block;	
+	position:absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 } 
 
 #green {
@@ -39,6 +55,12 @@
 	width: 30px;
 	border-radius: 25px;
 	display: inline-block;
+	position:absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 } 
 
 #purple {
@@ -47,14 +69,26 @@
 	width: 30px;
 	border-radius: 25px;
 	display: inline-block;
+	position:absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 #orange {
 	background-color: orange;
-	height: 30px;
-	width: 30px;
-	border-radius: 25px;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
 	display: inline-block;
+	position:absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 80;
 } 
 
 #charmander {

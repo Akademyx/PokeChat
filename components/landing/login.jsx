@@ -29,25 +29,28 @@ class Login extends Component {
 	}
 
 	submitLoginCredentials (nameVal, passwordVal, that) {
-    axios.post('/checkCredentials', {
-      name: nameVal,
-      password: passwordVal
-    })
-    .then(function (response) {
-      console.log(response);
-      document.getElementById("nameField").value = '', 
-      document.getElementById("passwordField").value = ''
-      // if response data is an empty string this means the user isnt found in the database. 
-      // if is empty, alert the user of incorrect credentials
-      if (response.data === '') alert ('incorrect password or username');
-			else {
-				// re-render and route to chatroom with react router
-				that.setState({redirectToChatRoom: true});
-			}
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+		if (nameVal === '' || passwordVal === '') alert('please enter a name and password!');
+		else {
+			axios.post('/checkCredentials', {
+				name: nameVal,
+				password: passwordVal
+			})
+			.then(function (response) {
+				console.log(response);
+				document.getElementById("nameField").value = '', 
+				document.getElementById("passwordField").value = ''
+				// if response data is an empty string this means the user isnt found in the database. 
+				// if is empty, alert the user of incorrect credentials
+				if (response.data === '') alert ('incorrect password or username');
+				else {
+					// re-render and route to chatroom with react router
+					that.setState({redirectToChatRoom: true});
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		}
   }
 	
 	render() {
@@ -77,7 +80,7 @@ class Login extends Component {
 								this
 							)
 							}}/>
-							<li><Link to='/signup'>First Time? Sign Up!</Link></li>
+						<FlatButton label='First Time? Sign Up!' containerElement={<Link to="/signup" />} linkButton={true}/>
 					</div>
 				</div>
 			</div>
