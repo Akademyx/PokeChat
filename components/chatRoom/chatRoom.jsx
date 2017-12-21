@@ -16,13 +16,11 @@ class ChatRoom extends Component {
 		})
 		.then(function (response) {
 			console.log(response.data);
-			// set state.users to the response.
 			let allUsers = [];
 			for ( let i = 0; i < response.data.length; i++ ) {
 				console.log(response.data[i].name);
-				allUsers.push(response.data[i].name);
+				allUsers.push(response.data[i]);
 			}
-			// that.setState({users: response.data});
 			that.setState({users: allUsers});
 		})
 		.catch(function (error) {
@@ -41,7 +39,10 @@ class ChatRoom extends Component {
 	render() {
 		let displayUsers = [];
 		for (let i = 0; i < this.state.users.length; i++) {
-			displayUsers.push(<div>{this.state.users[i]}</div>);
+			let styles = {
+				backgroundColor: this.state.users[i].themeColor
+			}
+			displayUsers.push(<div style={styles}>{this.state.users[i].name}</div>);
 		}
   	return (
 			<div>
