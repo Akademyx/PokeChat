@@ -50,6 +50,9 @@ class SignUp extends Component {
         // if is empty, alert the user of incorrect credentials
         if (response.data === '') alert ('incorrect password or username');
         else {
+          let appState = that.props.appContext;	
+					// pass user to app (parent) state				
+					appState.setState({user: response.data});
           // re-render and route to chatroom with react router
           that.setState({redirectToChatRoom: true});
         }
