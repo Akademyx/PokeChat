@@ -3,17 +3,22 @@ const mongoose = require('mongoose');
 
 let UserController = {
 	createUser(req, res) {
-		console.log(req, res)
+		// console.log(req, res)
+		console.log('REQ BODY', req.body);
 		User.create({
 			name: req.body.name,
-			password: req.body.password
+			password: req.body.password,
+			pokemon: req.body.pokemon,
+			themeColor: req.body.themeColor
 		}, (err, savedDoc) => {
 			if (err) {
 				res.status(400).send('error');
 			} else {
 				res.json({
 					name: req.body.name,
-					password: req.body.password
+					password: req.body.password,
+					pokemon: req.body.pokemon,
+					themeColor: req.body.themeColor
 				})
 			}
 		})

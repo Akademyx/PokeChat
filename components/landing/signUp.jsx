@@ -23,38 +23,48 @@ class SignUp extends Component {
 		super(props, context);
 		this.state = {
       redirectToChatRoom: false,
-      userColor: null
+      userColor: null,
+      userPokemon: null
 		};
     this.signUpUser = this.signUpUser.bind(this);
     this.addColor = this.addColor.bind(this);
+    this.addPokemon = this.addPokemon.bind(this);
 	}
 
 	signUpUser (nameVal, passwordVal, that) {
-    axios.post('/addUser', {
-      name: nameVal,
-      password: passwordVal,
-      pokemon: pokemonVal,
-      themeColor: themeColorVal
-    })
-    .then(function (response) {
-      console.log(response);
-      document.getElementById("nameField").value = '', 
-      document.getElementById("passwordField").value = ''
-      // if response data is an empty string this means the user isnt found in the database. 
-      // if is empty, alert the user of incorrect credentials
-      if (response.data === '') alert ('incorrect password or username');
-			else {
-				// re-render and route to chatroom with react router
-				that.setState({redirectToChatRoom: true});
-			}
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    if (this.state.userColor === null) alert('choose a color for your theme!');
+    else if (this.state.userPokemon === null) alert('choose a pokemon!');
+    else {
+      axios.post('/addUser', {
+        name: nameVal,
+        password: passwordVal,
+        pokemon: this.state.userPokemon,
+        themeColor: this.state.userColor
+      })
+      .then(function (response) {
+        console.log(response);
+        document.getElementById("nameField").value = '', 
+        document.getElementById("passwordField").value = ''
+        // if response data is an empty string this means the user isnt found in the database. 
+        // if is empty, alert the user of incorrect credentials
+        if (response.data === '') alert ('incorrect password or username');
+        else {
+          // re-render and route to chatroom with react router
+          that.setState({redirectToChatRoom: true});
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
   }
 
   addColor (color) {
     this.setState({userColor: color});
+  }
+
+  addPokemon (pokemon) {
+    this.setState({userPokemon: pokemon});
   }
 	
 	render() {
@@ -78,7 +88,7 @@ class SignUp extends Component {
 							hintStyle={fieldStyles.colorDeepOrange}
 						/>
 						<FlatButton label="Sign Up" fullWidth={true} onClick={ () => {
-							this.submitLoginCredentials(
+							this.signUpUser(
 								document.getElementById("nameField").value, 
 								document.getElementById("passwordField").value, 
 								this
@@ -90,6 +100,12 @@ class SignUp extends Component {
               <button id='green' onClick={ () => { this.addColor('green') }}></button>
               <button id='purple' onClick={ () => { this.addColor('purple') }}></button>
               <button id='orange' onClick={ () => { this.addColor('orange') }}></button>
+              <br></br>
+              <button id='charmander' onClick={ () => { this.addPokemon('charizard') }}></button>
+              <button id='squirtle' onClick={ () => { this.addPokemon('squirtle') }}></button>
+              <button id='raichu' onClick={ () => { this.addPokemon('raichu') }}></button>
+              <button id='bulbasaur' onClick={ () => { this.addPokemon('bulbasaur') }}></button>
+              <button id='onyx' onClick={ () => { this.addPokemon('onyx') }}></button>
 					</div>
 				</div>
 			</div>
