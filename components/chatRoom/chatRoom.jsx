@@ -50,7 +50,7 @@ class ChatRoom extends Component {
 					maxWidth: '60%',
 					overflowWrap: 'break-word',
 					display: 'inline-block',
-					borderRadius: '25px',
+					borderRadius: '15px',
 					padding: '10px',
 					marginRight: '10px',
 					marginTop: '7px',
@@ -61,9 +61,6 @@ class ChatRoom extends Component {
 					float: 'right',
 					padding: '17px'
 				}
-				// let wrapperStyle = {
-				// 	textAlign: 'center'
-				// }
 				displayUsers.push(<div><div style={ styles } key={ this.state.users[i]._id }>{ this.state.users[i].name }</div><span style={ spanStyle }>{ this.state.users[i].name }</span></div>,<br></br>);
 			}
 			// else
@@ -74,7 +71,7 @@ class ChatRoom extends Component {
 					maxWidth: '60%',
 					overflowWrap: 'break-word',
 					display: 'inline-block',
-					borderRadius: '25px',
+					borderRadius: '15px',
 					padding: '10px',
 					marginRight: '10px',
 					marginTop: '7px',

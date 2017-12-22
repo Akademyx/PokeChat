@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 
 let UserController = {
 	createUser(req, res) {
-		// console.log(req, res)
 		console.log('REQ BODY', req.body);
 		User.create({
 			name: req.body.name,
