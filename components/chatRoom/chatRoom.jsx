@@ -1,20 +1,34 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import axios from 'axios';
+import styles from './chatRoom.css';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/TextField';
-import styles from './chatRoom.css';
+import axios from 'axios';
+import UserOptions from './../userOptions/userOptions.jsx';
 
 class ChatRoom extends Component {
   constructor(props, context) {
 	super(props, context);
     this.state = {
 			messages: [],
-			renderedMessageCount: 0
+			renderedMessageCount: 0,
+			userOptionsToggleShow: {
+				display: 'none'
+			}
 		}
 		this.getMessages = this.getMessages.bind(this);		
 		this.addMessage = this.addMessage.bind(this);
 		this.checkForMessageUpdates = this.checkForMessageUpdates.bind(this);
+		this.toggleUserOptions = this.toggleUserOptions.bind(this);
+	}
+
+	componentDidMount () {
+		this.getMessages(this);		
+		setInterval(this.checkForMessageUpdates, 100);	
+	}
+
+	componentDidUpdate () {
+		console.log('chatRoom Updated');
 	}
 
 	addMessage (message, that) {
@@ -52,15 +66,6 @@ class ChatRoom extends Component {
 		});
 	}
 
-	componentDidMount () {
-		this.getMessages(this);		
-		setInterval(this.checkForMessageUpdates, 100);	
-	}
-
-	componentDidUpdate () {
-		console.log('chatRoom Updated');
-	}
-
 	checkForMessageUpdates () {
 		let that = this;
 		axios.get('/checkForUpdates', {
@@ -72,6 +77,10 @@ class ChatRoom extends Component {
 		.catch(function (error) {
 			console.log(error);
 		});
+	}
+
+	toggleUserOptions () {
+		this.setState({userOptionsToggleShow: 'block'});
 	}
   
 	render() {
@@ -148,10 +157,16 @@ class ChatRoom extends Component {
 			backgroundColor: this.props.user.themeColor,
 			opacity: '0.9'
 		}
+		
 
   	return (
 			<div>
-				<header id='chatHeader' style={ headerStyle }>{ 'POKE CHAT' }</header>
+				<header id='chatHeader' style={ headerStyle }>{ 'POKE CHAT' }
+				{/* render userSettings component */}
+				<div id='userOptionsWrapper' style={ this.state.userOptionsToggleShow }>
+					<UserOptions></UserOptions>
+				</div>
+				</header>
 				<div id='usersContainer'>{ displayMessages }</div>
 				<div id='chatFooter'>
 					<TextField
