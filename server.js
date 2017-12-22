@@ -42,6 +42,7 @@ app.post('/addUser', userController.createUser);
 app.get('/getUsers', userController.getAllUsers);
 app.post('/addMessage', messageController.createMessage);
 app.get('/getMessages', messageController.getAllMessages);
+app.get('/checkForUpdates', messageController.getAllMessages);
 // console.log('MESSAGE CONTROLLER', messageController.getAllMessages);
 // app.post('/redirectOnLogin', (req,res) => {
 //   res.redirect('/chatroom');

@@ -10,11 +10,13 @@ class ChatRoom extends Component {
 	super(props, context);
     this.state = {
 			// users: []
-			messages: []
+			messages: [],
+			renderedMessageCount: 0
 		}
 		// this.getUsers = this.getUsers.bind(this);
 		this.getMessages = this.getMessages.bind(this);		
 		this.addMessage = this.addMessage.bind(this);
+		this.checkForMessageUpdates = this.checkForMessageUpdates.bind(this);
 	}
 
 	addMessage (message, that) {
@@ -44,38 +46,36 @@ class ChatRoom extends Component {
 				allMessages.push(response.data[i]);
 			}
 			that.setState({messages: allMessages});
+			// may or may not update because of asynchronous calls? Or will because React bunches them?
+			that.setState({renderedMessageCount: response.data.length});
 		})
 		.catch(function (error) {
 			console.log('GET MESSAGES ERROR', error);
 		});
 	}
-	
-	// getUsers (that) {
-	// 	axios.get('/getUsers', {
-	// 	})
-	// 	.then(function (response) {
-	// 		console.log(response.data);
-	// 		let allUsers = [];
-	// 		for ( let i = 0; i < response.data.length; i++ ) {
-	// 			console.log(response.data[i].name);
-	// 			allUsers.push(response.data[i]);
-	// 		}
-	// 		that.setState({users: allUsers});
-	// 	})
-	// 	.catch(function (error) {
-	// 		console.log(error);
-	// 	});
-	// }
 
 	componentDidMount () {
-		// this.getUsers(this);
 		this.getMessages(this);		
+		// setInterval(this.checkForMessageUpdates, 500);	
 	}
 
 	componentDidUpdate () {
-		// console.log('STATE', this.state.users);
-		// this.getMessages(this);
 		console.log('chatRoom Updated');
+	}
+
+	checkForMessageUpdates () {
+		// this.getMessages(this);
+		// console.log('check for new messages');
+		let that = this;
+		axios.get('/checkForUpdates', {
+		})
+		.then(function (response) {
+			console.log(response.data);
+			if(response.data.length > that.state.renderedMessageCount) that.getMessages(that);
+		})
+		.catch(function (error) {
+			console.log('CHECK UPDATES ERROR', error);
+		});
 	}
   
 	render() {
