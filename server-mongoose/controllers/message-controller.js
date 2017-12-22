@@ -25,6 +25,7 @@ let MessageController = {
 		})
 	},
 	getAllMessages(req, res) {
+    console.log('REQUEST TO GETALLMESSAGES', req.body);
 		Message.find({}, function(err, messages) {
 		  res.status(200);
 		  res.setHeader('Content-type', 'application/json');
@@ -33,5 +34,8 @@ let MessageController = {
 		});
 	}
 };
+
+
+
 
 module.exports = MessageController;

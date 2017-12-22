@@ -9,9 +9,11 @@ class ChatRoom extends Component {
   constructor(props, context) {
 	super(props, context);
     this.state = {
-			users: []
+			// users: []
+			messages: []
 		}
-		this.getUsers = this.getUsers.bind(this);
+		// this.getUsers = this.getUsers.bind(this);
+		this.getMessages = this.getMessages.bind(this);		
 		this.addMessage = this.addMessage.bind(this);
 	}
 
@@ -30,39 +32,59 @@ class ChatRoom extends Component {
 			console.log(error);
 		});
 	}
-	
-	getUsers (that) {
-		axios.get('/getUsers', {
+
+	getMessages (that) {
+		axios.get('/getMessages', {
 		})
 		.then(function (response) {
 			console.log(response.data);
-			let allUsers = [];
+			let allMessages = [];
 			for ( let i = 0; i < response.data.length; i++ ) {
-				console.log(response.data[i].name);
-				allUsers.push(response.data[i]);
+				console.log(response.data[i].message);
+				allMessages.push(response.data[i]);
 			}
-			that.setState({users: allUsers});
+			that.setState({messages: allMessages});
 		})
 		.catch(function (error) {
-			console.log(error);
+			console.log('GET MESSAGES ERROR', error);
 		});
 	}
+	
+	// getUsers (that) {
+	// 	axios.get('/getUsers', {
+	// 	})
+	// 	.then(function (response) {
+	// 		console.log(response.data);
+	// 		let allUsers = [];
+	// 		for ( let i = 0; i < response.data.length; i++ ) {
+	// 			console.log(response.data[i].name);
+	// 			allUsers.push(response.data[i]);
+	// 		}
+	// 		that.setState({users: allUsers});
+	// 	})
+	// 	.catch(function (error) {
+	// 		console.log(error);
+	// 	});
+	// }
 
 	componentDidMount () {
-		this.getUsers(this);
+		// this.getUsers(this);
+		this.getMessages(this);		
 	}
 
-	// componentDidUpdate () {
-	// 	console.log('STATE', this.state.users);
-	// }
+	componentDidUpdate () {
+		// console.log('STATE', this.state.users);
+		// this.getMessages(this);
+		console.log('chatRoom Updated');
+	}
   
 	render() {
-		let displayUsers = [];
-		for (let i = 0; i < this.state.users.length; i++) {
-			// if users id equals state user's id
-			if (this.state.users[i]._id === this.props.user._id) {
+		let displayMessages = [];
+		for (let i = 0; i < this.state.messages.length; i++) {
+			// if messages user name equals state user's name
+			if (this.state.messages[i].name === this.props.user.name) {
 				let styles = {
-					backgroundColor: this.state.users[i].themeColor,
+					backgroundColor: this.state.messages[i].themeColor,
 					minWidth: '30px',
 					maxWidth: '60%',
 					overflowWrap: 'break-word',
@@ -78,12 +100,13 @@ class ChatRoom extends Component {
 					float: 'right',
 					padding: '17px'
 				}
-				displayUsers.push(<div><div style={ styles } key={ this.state.users[i]._id }>{ this.state.users[i].name }</div><span style={ spanStyle }>{ this.state.users[i].name }</span></div>,<br></br>);
+				// displayMessages.push(<div><div style={ styles } key={ this.state.messages[i]._id }>{ this.state.messages[i].message }</div><span style={ spanStyle }>{ this.state.messages[i].name }</span></div>,<br></br>);
+				displayMessages.push(<div style={ styles } key={ this.state.messages[i]._id }>{ this.state.messages[i].message }</div>,<span style={ spanStyle }>{ this.state.messages[i].name }</span>,<br></br>);				
 			}
 			// else
 			else {
 				let styles = {
-					backgroundColor: this.state.users[i].themeColor,
+					backgroundColor: this.state.messages[i].themeColor,
 					minWidth: '30px',
 					maxWidth: '60%',
 					overflowWrap: 'break-word',
@@ -94,7 +117,7 @@ class ChatRoom extends Component {
 					marginTop: '7px',
 					marginBottom: '7px',
 				}
-				displayUsers.push(<div style={ styles } key={ this.state.users[i]._id }>{ this.state.users[i].name }</div>,<span>{ this.state.users[i].name }</span>,<br></br>);
+				displayMessages.push(<div style={ styles } key={ this.state.messages[i]._id }>{ this.state.messages[i].message }</div>,<span>{ this.state.messages[i].name }</span>,<br></br>);
 			}
 		}
 
@@ -114,18 +137,18 @@ class ChatRoom extends Component {
 			<div>
 				{/* <div id="testChatRoomRenderDiv">{ 'CHAT ROOM' }</div> */}
 				<header id='chatHeader' style={ headerStyle }>{ 'POKE CHAT' }</header>
-				<div id='usersContainer'>{ displayUsers }</div>
+				<div id='usersContainer'>{ displayMessages }</div>
 				<div id='chatFooter'>
-				<TextField
-							id="messageField"
-							hintText="message"
-						/>
-						<FlatButton label="Login" fullWidth={true} onClick={ () => {
-							this.addMessage(
-								document.getElementById("messageField").value, 
-								this
-							)
-							}}/>
+					<TextField
+						id="messageField"
+						hintText="message"
+					/>
+					<FlatButton label="Add Message" fullWidth={true} onClick={ () => {
+						this.addMessage(
+							document.getElementById("messageField").value, 
+							this
+						)
+					}}/>
 				</div>
 			</div>
     	)
@@ -133,3 +156,45 @@ class ChatRoom extends Component {
 }
 
 export default ChatRoom;
+
+
+// let displayUsers = [];
+// for (let i = 0; i < this.state.users.length; i++) {
+// 	// if users id equals state user's id
+// 	if (this.state.users[i]._id === this.props.user._id) {
+// 		let styles = {
+// 			backgroundColor: this.state.users[i].themeColor,
+// 			minWidth: '30px',
+// 			maxWidth: '60%',
+// 			overflowWrap: 'break-word',
+// 			display: 'inline-block',
+// 			borderRadius: '15px',
+// 			padding: '10px',
+// 			marginRight: '10px',
+// 			marginTop: '7px',
+// 			marginBottom: '7px',
+// 			float: 'right'
+// 		}
+// 		let spanStyle = {
+// 			float: 'right',
+// 			padding: '17px'
+// 		}
+// 		displayUsers.push(<div><div style={ styles } key={ this.state.users[i]._id }>{ this.state.users[i].name }</div><span style={ spanStyle }>{ this.state.users[i].name }</span></div>,<br></br>);
+// 	}
+// 	// else
+// 	else {
+// 		let styles = {
+// 			backgroundColor: this.state.users[i].themeColor,
+// 			minWidth: '30px',
+// 			maxWidth: '60%',
+// 			overflowWrap: 'break-word',
+// 			display: 'inline-block',
+// 			borderRadius: '15px',
+// 			padding: '10px',
+// 			marginRight: '10px',
+// 			marginTop: '7px',
+// 			marginBottom: '7px',
+// 		}
+// 		displayUsers.push(<div style={ styles } key={ this.state.users[i]._id }>{ this.state.users[i].name }</div>,<span>{ this.state.users[i].name }</span>,<br></br>);
+// 	}
+// }
