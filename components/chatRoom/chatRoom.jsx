@@ -12,6 +12,23 @@ class ChatRoom extends Component {
 			users: []
 		}
 		this.getUsers = this.getUsers.bind(this);
+		this.addMessage = this.addMessage.bind(this);
+	}
+
+	addMessage (message, that) {
+		axios.post('/addMessage', {
+			message: message,
+			name: that.props.user.name,
+			password: that.props.user.password,
+			pokemon: that.props.user.pokemon,
+			themeColor: that.props.user.themeColor,
+		})
+		.then(function (response) {
+			console.log('MESSAGE ADD RESPONSE', response);
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
 	}
 	
 	getUsers (that) {
