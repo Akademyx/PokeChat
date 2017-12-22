@@ -18,27 +18,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <div id='loginWrapper' style={{display: this.state.showLogin}}>
-          <MuiThemeProvider>
-            <Login submitLoginCredentials = {this.submitLoginCredentials} parentContext = {this}/>
-            <SignUp/>
-            <ChatRoom/>
-          </MuiThemeProvider>
-        </div> */}
-        {/* <ChatRoom/> */}
         <Switch>
-          {/* <Route exact path='/' component={Login}/> */}
           <Route exact path="/" render={props => <Login user={this.state.user} appContext={this} {...props} />} />
           <Route exact path="/signup" render={props => <SignUp user={this.state.user} appContext={this} {...props} />} />
           <Route exact path="/chatroom" render={props => <ChatRoom user={this.state.user} appContext={this} {...props} />} />
-          {/* <Route path='/signup' component={SignUp}/> */}
-          {/* <Route path='/chatroom' component={ChatRoom}/> */}
         </Switch>
       </div>
       )
     }
 }
 
-// render(<App />, document.getElementById('content'));
 export default App;
 

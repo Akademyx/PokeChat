@@ -56,7 +56,7 @@ class ChatRoom extends Component {
 
 	componentDidMount () {
 		this.getMessages(this);		
-		// setInterval(this.checkForMessageUpdates, 500);	
+		setInterval(this.checkForMessageUpdates, 100);	
 	}
 
 	componentDidUpdate () {
