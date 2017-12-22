@@ -96,7 +96,18 @@ class ChatRoom extends Component {
 					// float: 'right',
 					// padding: '17px'
 				}
-				displayMessages.push(<div style={ styles } key={ this.state.messages[i]._id }>{ this.state.messages[i].message }</div>,<span style={ spanStyle }>{ this.state.messages[i].name }</span>,<br></br>);				
+				let nameStyles = {
+					minWidth: '80px',
+					// maxWidth: '60px',
+					display: 'inline-block',
+					borderRadius: '15px',
+					padding: '10px',
+					marginRight: '10px',
+					marginTop: '7px',
+					marginBottom: '7px',
+					textAlign: 'center'
+				}
+				displayMessages.push(<div style={ nameStyles }>{ 'me' }</div>,<div style={ styles } key={ this.state.messages[i]._id }>{ this.state.messages[i].message }</div>,<span style={ spanStyle }></span>,<br></br>);				
 			}
 			else {
 				let styles = {
@@ -111,7 +122,18 @@ class ChatRoom extends Component {
 					marginTop: '7px',
 					marginBottom: '7px',
 				}
-				displayMessages.push(<div style={ styles } key={ this.state.messages[i]._id }>{ this.state.messages[i].message }</div>,<span>{ this.state.messages[i].name }</span>,<br></br>);
+				let nameStyles = {
+					minWidth: '80px',
+					// maxWidth: '60px',
+					display: 'inline-block',
+					borderRadius: '15px',
+					padding: '10px',
+					marginRight: '10px',
+					marginTop: '7px',
+					marginBottom: '7px',
+					textAlign: 'center'
+				}
+				displayMessages.push(<div style={ nameStyles }>{ this.state.messages[i].name }</div>,<div style={ styles } key={ this.state.messages[i]._id }>{ this.state.messages[i].message }</div>,<span></span>,<br></br>);
 			}
 		}
 

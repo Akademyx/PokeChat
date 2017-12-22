@@ -100,7 +100,7 @@ class SignUp extends Component {
 							}}/>
               <FlatButton label='Already a PokeChat User?' containerElement={<Link to="/" />} linkButton={true}/>
 					</div>
-          <div id="colorAndPokemonWrapper">
+          <div id="pokemonWrapper">
             <button id='charmander' onClick={ () => { this.addPokemon('charizard') }}></button>
             <button id='squirtle' onClick={ () => { this.addPokemon('squirtle') }}></button>
             <button id='raichu' onClick={ () => { this.addPokemon('raichu') }}></button>
@@ -108,7 +108,7 @@ class SignUp extends Component {
             <button id='onyx' onClick={ () => { this.addPokemon('onyx') }}></button>
           </div>
           <br></br>
-          <div>
+          <div id="colorWrapper">
             <button id='red' onClick={ () => { this.addColor('rgb(206, 91, 91)') }}></button>
             <button id='blue' onClick={ () => { this.addColor('rgb(92, 149, 245)') }}></button>
             <button id='green' onClick={ () => { this.addColor('rgb(121, 176, 121)') }}></button>

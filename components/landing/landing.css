@@ -1,13 +1,15 @@
 .landingBox {
 	background-color: white;
+	/* background-color:rgba(255, 255, 255, 0.5); */
 	background-image: url('https://static1.e926.net/data/8b/22/8b22c2b446f9f539693c305d7e599ef6.gif');
 	background-size: 100% 100%;
 	margin: auto;
 	position: relative;
 	width: 500px;
 	height: 500px;
-	border: 1px grey solid;
-	box-shadow: 1px 1px 30px 10px #ee9919;
+	border: 1px rgb(222, 211, 211) solid;
+	box-shadow: 1px 1px 30px 10px #d3ccc1;
+	top: 30px;
 }
 
 #loginForm {
@@ -16,17 +18,74 @@
 	height: 50%;
 }
 
-#colorAndPokemonWrapper {
+#pokemonWrapper {
 	margin: auto;	
+}
+
+#colorWrapper {
+	position: absolute;
+	margin: auto;
+	top: 400;
+	left: 18%;
+}
+
+#charmander {
+	background-image: url('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909');
+	/* background-position: 30% 10%; */
+	background-size: 100px 100px;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	display: inline-block;
+} 
+
+#squirtle {
+	background-image: url('https://seeklogo.com/images/S/squirtle-logo-0E4AE193EE-seeklogo.com.png');
+	/* background-position: 30% 50%; */
+	background-size: 100px 100px;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	display: inline-block;
+} 
+
+#raichu {
+	background-image: url('http://vignette3.wikia.nocookie.net/roblox-pokemon-project/images/3/33/Raichu-wallpaper.png/revision/latest?cb=20161110022821');
+	/* background-position: 30% 50%; */
+	background-size: 100px 100px;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	display: inline-block;	
+} 
+
+#bulbasaur {
+	background-image: url('https://vignette.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758');
+	/* background-position: 30% 50%; */
+	background-size: 100px 100px;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	display: inline-block;
+} 
+
+#onyx {
+	background-image: url('https://pre00.deviantart.net/959a/th/pre/f/2016/075/4/6/095_onix_by_rayo123000-d9vbjj3.png');
+	/* background-position: 30% 50%; */
+	background-size: 100px 100px;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	display: inline-block;
 }
 
 #red {
 	background-color: rgb(206, 91, 91);
-	height: 30px;
-	width: 30px;
-	border-radius: 25px;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
 	display: inline-block;
-	position:absolute;
+	/* position:absolute; */
 	margin: auto;
 	top: 0;
 	bottom: 0;
@@ -36,11 +95,11 @@
 
 #blue {
 	background-color: rgb(92, 149, 245);
-	height: 30px;
-	width: 30px;
-	border-radius: 25px;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
 	display: inline-block;	
-	position:absolute;
+	/* position:absolute; */
 	margin: auto;
 	top: 0;
 	bottom: 0;
@@ -50,11 +109,11 @@
 
 #green {
 	background-color: rgb(121, 176, 121);
-	height: 30px;
-	width: 30px;
-	border-radius: 25px;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
 	display: inline-block;
-	position:absolute;
+	/* position:absolute; */
 	margin: auto;
 	top: 0;
 	bottom: 0;
@@ -64,11 +123,11 @@
 
 #purple {
 	background-color: rgb(148, 81, 148);
-	height: 30px;
-	width: 30px;
-	border-radius: 25px;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
 	display: inline-block;
-	position:absolute;
+	/* position:absolute; */
 	margin: auto;
 	top: 0;
 	bottom: 0;
@@ -82,50 +141,10 @@
 	width: 60px;
 	border-radius: 50%;
 	display: inline-block;
-	position:absolute;
+	/* position:absolute; */
 	margin: auto;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 80;
 } 
-
-#charmander {
-	background-image: url('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909');
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	display: inline-block;
-} 
-
-#squirtle {
-	background-image: url('https://seeklogo.com/images/S/squirtle-logo-0E4AE193EE-seeklogo.com.png');
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	display: inline-block;
-} 
-
-#raichu {
-	background-image: url('http://vignette3.wikia.nocookie.net/roblox-pokemon-project/images/3/33/Raichu-wallpaper.png/revision/latest?cb=20161110022821');
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	display: inline-block;	
-} 
-
-#bulbasaur {
-	background-image: url('https://vignette.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758');
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	display: inline-block;
-} 
-
-#onyx {
-	background-image: url('https://pre00.deviantart.net/959a/th/pre/f/2016/075/4/6/095_onix_by_rayo123000-d9vbjj3.png');
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	display: inline-block;
-}
