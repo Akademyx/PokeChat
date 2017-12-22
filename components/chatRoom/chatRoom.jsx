@@ -9,11 +9,9 @@ class ChatRoom extends Component {
   constructor(props, context) {
 	super(props, context);
     this.state = {
-			// users: []
 			messages: [],
 			renderedMessageCount: 0
 		}
-		// this.getUsers = this.getUsers.bind(this);
 		this.getMessages = this.getMessages.bind(this);		
 		this.addMessage = this.addMessage.bind(this);
 		this.checkForMessageUpdates = this.checkForMessageUpdates.bind(this);
@@ -28,7 +26,7 @@ class ChatRoom extends Component {
 			themeColor: that.props.user.themeColor,
 		})
 		.then(function (response) {
-			console.log('MESSAGE ADD RESPONSE', response);
+			console.log(response);
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -46,11 +44,11 @@ class ChatRoom extends Component {
 				allMessages.push(response.data[i]);
 			}
 			that.setState({messages: allMessages});
-			// may or may not update because of asynchronous calls? Or will because React bunches them?
 			that.setState({renderedMessageCount: response.data.length});
+			window.scrollTo(0, document.body.scrollHeight);
 		})
 		.catch(function (error) {
-			console.log('GET MESSAGES ERROR', error);
+			console.log(error);
 		});
 	}
 
@@ -64,8 +62,6 @@ class ChatRoom extends Component {
 	}
 
 	checkForMessageUpdates () {
-		// this.getMessages(this);
-		// console.log('check for new messages');
 		let that = this;
 		axios.get('/checkForUpdates', {
 		})
@@ -74,7 +70,7 @@ class ChatRoom extends Component {
 			if(response.data.length > that.state.renderedMessageCount) that.getMessages(that);
 		})
 		.catch(function (error) {
-			console.log('CHECK UPDATES ERROR', error);
+			console.log(error);
 		});
 	}
   
@@ -94,16 +90,14 @@ class ChatRoom extends Component {
 					marginRight: '10px',
 					marginTop: '7px',
 					marginBottom: '7px',
-					float: 'right'
+					// float: 'right'
 				}
 				let spanStyle = {
-					float: 'right',
-					padding: '17px'
+					// float: 'right',
+					// padding: '17px'
 				}
-				// displayMessages.push(<div><div style={ styles } key={ this.state.messages[i]._id }>{ this.state.messages[i].message }</div><span style={ spanStyle }>{ this.state.messages[i].name }</span></div>,<br></br>);
 				displayMessages.push(<div style={ styles } key={ this.state.messages[i]._id }>{ this.state.messages[i].message }</div>,<span style={ spanStyle }>{ this.state.messages[i].name }</span>,<br></br>);				
 			}
-			// else
 			else {
 				let styles = {
 					backgroundColor: this.state.messages[i].themeColor,
@@ -126,16 +120,15 @@ class ChatRoom extends Component {
 			zIndex: '1',
 			width: '100%',
 			height: '60px',
-			// centers text vertically:
-			lineHeight: '60px',
+			lineHeight: '60px', // centers text vertically
 			textAlign: 'center',
-			border: '1px solid',
-			backgroundColor: this.props.user.themeColor
+			border: '1px',
+			backgroundColor: this.props.user.themeColor,
+			opacity: '0.9'
 		}
 
   	return (
 			<div>
-				{/* <div id="testChatRoomRenderDiv">{ 'CHAT ROOM' }</div> */}
 				<header id='chatHeader' style={ headerStyle }>{ 'POKE CHAT' }</header>
 				<div id='usersContainer'>{ displayMessages }</div>
 				<div id='chatFooter'>
@@ -156,45 +149,3 @@ class ChatRoom extends Component {
 }
 
 export default ChatRoom;
-
-
-// let displayUsers = [];
-// for (let i = 0; i < this.state.users.length; i++) {
-// 	// if users id equals state user's id
-// 	if (this.state.users[i]._id === this.props.user._id) {
-// 		let styles = {
-// 			backgroundColor: this.state.users[i].themeColor,
-// 			minWidth: '30px',
-// 			maxWidth: '60%',
-// 			overflowWrap: 'break-word',
-// 			display: 'inline-block',
-// 			borderRadius: '15px',
-// 			padding: '10px',
-// 			marginRight: '10px',
-// 			marginTop: '7px',
-// 			marginBottom: '7px',
-// 			float: 'right'
-// 		}
-// 		let spanStyle = {
-// 			float: 'right',
-// 			padding: '17px'
-// 		}
-// 		displayUsers.push(<div><div style={ styles } key={ this.state.users[i]._id }>{ this.state.users[i].name }</div><span style={ spanStyle }>{ this.state.users[i].name }</span></div>,<br></br>);
-// 	}
-// 	// else
-// 	else {
-// 		let styles = {
-// 			backgroundColor: this.state.users[i].themeColor,
-// 			minWidth: '30px',
-// 			maxWidth: '60%',
-// 			overflowWrap: 'break-word',
-// 			display: 'inline-block',
-// 			borderRadius: '15px',
-// 			padding: '10px',
-// 			marginRight: '10px',
-// 			marginTop: '7px',
-// 			marginBottom: '7px',
-// 		}
-// 		displayUsers.push(<div style={ styles } key={ this.state.users[i]._id }>{ this.state.users[i].name }</div>,<span>{ this.state.users[i].name }</span>,<br></br>);
-// 	}
-// }

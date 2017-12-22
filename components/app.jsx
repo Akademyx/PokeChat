@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Switch, Route } from 'react-router-dom';
-import axios from 'axios';
 import Login from './landing/login.jsx';
 import SignUp from './landing/signUp.jsx';
 import ChatRoom from './chatRoom/chatRoom.jsx';

@@ -109,11 +109,11 @@ class SignUp extends Component {
           </div>
           <br></br>
           <div>
-            <button id='red' onClick={ () => { this.addColor('red') }}></button>
-            <button id='blue' onClick={ () => { this.addColor('blue') }}></button>
-            <button id='green' onClick={ () => { this.addColor('green') }}></button>
-            <button id='purple' onClick={ () => { this.addColor('purple') }}></button>
-            <button id='orange' onClick={ () => { this.addColor('orange') }}></button>
+            <button id='red' onClick={ () => { this.addColor('rgb(206, 91, 91)') }}></button>
+            <button id='blue' onClick={ () => { this.addColor('rgb(92, 149, 245)') }}></button>
+            <button id='green' onClick={ () => { this.addColor('rgb(121, 176, 121)') }}></button>
+            <button id='purple' onClick={ () => { this.addColor('rgb(148, 81, 148)') }}></button>
+            <button id='orange' onClick={ () => { this.addColor('rgb(240, 184, 87)') }}></button>
           </div>
 				</div>
 			</div>
