@@ -11,8 +11,6 @@ import axios from 'axios';
 import UserOptions from './../userOptions/userOptions.jsx';
 import UserDrawer from './../userOptions/userDrawer.jsx';
 
-var charmander = new Audio('./dUOnnIrfzFKr.128.mp3');
-
 class ChatRoom extends Component {
   constructor(props, context) {
 	super(props, context);
@@ -23,8 +21,12 @@ class ChatRoom extends Component {
 			userOptionsToggleShow: {
 				display: 'none'
 			},
+			showSpeechBubble: 'show',
+			hasRenderedOnceAlready: false,
 			//TEST
-			rerouteToLogin: false
+			rerouteToLogin: false,
+			greeting: null,
+			greetingPunctuation: '!'
 			//TEST
 		}
 
@@ -32,16 +34,31 @@ class ChatRoom extends Component {
 		this.addMessage = this.addMessage.bind(this);
 		this.checkForMessageUpdates = this.checkForMessageUpdates.bind(this);
 		this.toggleUserOptions = this.toggleUserOptions.bind(this);
+		this.toggleSpeechBubble = this.toggleSpeechBubble.bind(this);
+		this.scrollToBottom = this.scrollToBottom.bind(this);
 	}
 
 	componentDidMount () {
-		this.getMessages(this);		
-		console.log('POKEMON', this.props.user.pokemon);		
-		setInterval(this.checkForMessageUpdates, 100);	
+		this.getMessages(this);
+		setInterval(this.checkForMessageUpdates, 100);
+		setTimeout(this.toggleSpeechBubble, 13000);	
+		if (this.state.hasRenderedOnceAlready === false) {
+			this.scrollToBottom();
+			this.setState({hasRenderedOnceAlready: true});			
+		}
+		var date = new Date();
+		var current_hour = date.getHours();
+		console.log('CURRENT HOUR', current_hour);
+		if (current_hour >= 5 && current_hour < 12) this.setState({greeting: 'Good morning, '});
+		else if (current_hour >= 12 && current_hour < 18) this.setState({greeting: 'Good afternoon, '});
+		else if (current_hour >= 18 && current_hour <= 22) this.setState({greeting: 'Good evening, '});
+		else {
+			this.setState({greeting: 'Up late, '});
+			this.setState({greetingPunctuation: '?'});
+		}
 	}
 
 	componentDidUpdate () {
-		console.log('chatRoom Updated');
 	}
 
 	addMessage (message, that) {
@@ -71,8 +88,7 @@ class ChatRoom extends Component {
 			}
 			that.setState({messages: allMessages});
 			that.setState({renderedMessageCount: response.data.length});
-			window.scrollTo(0, document.body.scrollHeight);
-			charmander.play();
+			// window.scrollTo(0, document.body.scrollHeight);
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -95,6 +111,14 @@ class ChatRoom extends Component {
 	toggleUserOptions () {
 		if (this.state.userOptionsToggleShow.display === 'none') this.setState({userOptionsToggleShow: {display: 'block'}});
 		else this.setState({userOptionsToggleShow: {display: 'none'}});
+	}
+
+	toggleSpeechBubble () {
+		this.setState({showSpeechBubble: 'none'});
+	}
+
+	scrollToBottom () {
+		window.scrollTo(0, document.body.scrollHeight);				
 	}
 
 	render() {
@@ -171,13 +195,12 @@ class ChatRoom extends Component {
 			height: '60px',
 			lineHeight: '60px', // centers text vertically
 			textAlign: 'center',
-			border: '1px',
+			borderBottom: '1px solid white',
 			backgroundColor: this.props.user.themeColor,
 			opacity: '0.9'
 		}
 		
 		let userPokemonButtonStyle = {
-			// backgroundImage: 'url('')',
 			backgroundImage: 'url(https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909)',
 			backgroundSize: '100px 100px',
 			position: 'absolute',
@@ -193,7 +216,7 @@ class ChatRoom extends Component {
 				<header id='chatHeader' style={ headerStyle }>{ 'POKE CHAT' }
 				{/* render userSettings component */}
 					<button id='userOptionsButton' style={userPokemonButtonStyle} onClick={ () => { this.toggleUserOptions() }}></button>
-					<div className='speech-bubble'>{'Good Evening, '}{this.props.user.name}{'!'}</div>
+					<div className='speech-bubble fadeOut' style={{display: this.state.showSpeechBubble}} onClick={ () => { this.toggleSpeechBubble() }}>{this.state.greeting}{this.props.user.name}{this.state.greetingPunctuation}</div>
 				<div id='userOptionsWrapper' style={this.state.userOptionsToggleShow}>
 					{/* <UserOptions appContext={this.props.appContext} redirectToLogin={this.props.redirectToLogin} chatRoomContext={this}></UserOptions> */}
 					<UserOptions appContext={this.props.appContext} redirectToLogin={this.props.redirectToLogin} user={this.props.user} chatRoomContext={this}></UserOptions>

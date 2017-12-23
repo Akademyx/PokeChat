@@ -35,14 +35,12 @@ class userDrawer extends Component {
           label="My Settings"
           onClick={this.handleToggle}
         />
-        {/* <MenuItem onClick={this.handleToggle}>My Settings</MenuItem> */}
         <Drawer
           docked={false}
           width={220}
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
         >
-          {/* <MenuItem onClick={this.handleClose}>My Settings</MenuItem> */}
           <UserSettings userDrawerContext={this}></UserSettings>
           <hr></hr>
           <UserPokemon></UserPokemon>
