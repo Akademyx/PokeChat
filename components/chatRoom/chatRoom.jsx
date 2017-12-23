@@ -11,6 +11,8 @@ import axios from 'axios';
 import UserOptions from './../userOptions/userOptions.jsx';
 import UserDrawer from './../userOptions/userDrawer.jsx';
 
+var charmander = new Audio('./dUOnnIrfzFKr.128.mp3');
+
 class ChatRoom extends Component {
   constructor(props, context) {
 	super(props, context);
@@ -65,12 +67,12 @@ class ChatRoom extends Component {
 			console.log(response.data);
 			let allMessages = [];
 			for ( let i = 0; i < response.data.length; i++ ) {
-				console.log(response.data[i].message);
 				allMessages.push(response.data[i]);
 			}
 			that.setState({messages: allMessages});
 			that.setState({renderedMessageCount: response.data.length});
 			window.scrollTo(0, document.body.scrollHeight);
+			charmander.play();
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -179,7 +181,7 @@ class ChatRoom extends Component {
 			backgroundImage: 'url(https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909)',
 			backgroundSize: '100px 100px',
 			position: 'absolute',
-			top: '20px',
+			top: '80px',
 			right: '20px',
 			height: '100px',
 			width: '100px',
@@ -191,6 +193,7 @@ class ChatRoom extends Component {
 				<header id='chatHeader' style={ headerStyle }>{ 'POKE CHAT' }
 				{/* render userSettings component */}
 					<button id='userOptionsButton' style={userPokemonButtonStyle} onClick={ () => { this.toggleUserOptions() }}></button>
+					<div className='speech-bubble'>{'Good Evening, '}{this.props.user.name}{'!'}</div>
 				<div id='userOptionsWrapper' style={this.state.userOptionsToggleShow}>
 					{/* <UserOptions appContext={this.props.appContext} redirectToLogin={this.props.redirectToLogin} chatRoomContext={this}></UserOptions> */}
 					<UserOptions appContext={this.props.appContext} redirectToLogin={this.props.redirectToLogin} user={this.props.user} chatRoomContext={this}></UserOptions>
