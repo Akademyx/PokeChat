@@ -6,6 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { lchmod } from 'fs';
 import UserSettings from './userSettings/userSettings.jsx';
 import UserPokemon from './userPokemon/userPokemon.jsx';
+import UserTheme from './userTheme/userTheme.jsx';
 
 // undocked 
 class userDrawer extends Component {
@@ -46,7 +47,8 @@ class userDrawer extends Component {
           <hr></hr>
           <UserPokemon></UserPokemon>
           <hr></hr>
-          <br></br>
+          {/* <br></br> */}
+          <UserTheme></UserTheme>
           <br></br>
           <hr></hr>
           <MenuItem onClick={this.handleClose}>LOG OUT</MenuItem>

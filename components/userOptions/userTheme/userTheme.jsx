@@ -5,10 +5,10 @@ import FlatButton from 'material-ui/FlatButton';
 import Snackbar from 'material-ui/Snackbar';
 import { lchmod } from 'fs';
 import {orange500, deepOrange500 } from 'material-ui/styles/colors';
-import styles from './userPokemon.css';
+import styles from './userTheme.css';
 
 // undocked 
-class userPokemon extends Component {
+class userTheme extends Component {
 
   constructor(props) {
     super(props);
@@ -36,21 +36,21 @@ class userPokemon extends Component {
     return (
       <div>
         <div id='textFieldWrapper'>
-          <h4 id="choosePokemonHeader">{'Choose a Different Pokemon'}</h4>
-          <div id="pokemonWrapperUserDrawer">
-            <button id='charmander' onClick={ () => { this.addPokemon('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909') }}></button>
-            <button id='squirtle' onClick={ () => { this.addPokemon('squirtle') }}></button>
-            <button id='raichu' onClick={ () => { this.addPokemon('raichu') }}></button>
-            <button id='bulbasaur' onClick={ () => { this.addPokemon('bulbasaur') }}></button>
-            <button id='onyx' onClick={ () => { this.addPokemon('onyx') }}></button>
+          <h4 id="chooseThemeHeader">{'Select Another Theme'}</h4>
+          <div id="colorWrapperUserDrawer">
+            <button id='red' onClick={ () => { this.addColor('rgb(206, 91, 91)') }}></button>
+            <button id='blue' onClick={ () => { this.addColor('rgb(92, 149, 245)') }}></button>
+            <button id='green' onClick={ () => { this.addColor('rgb(121, 176, 121)') }}></button>
+            <button id='purple' onClick={ () => { this.addColor('rgb(148, 81, 148)') }}></button>
+            <button id='orange' onClick={ () => { this.addColor('rgb(240, 184, 87)') }}></button>
           </div>
           {/* <FlatButton
             onClick={this.handleClick}
-            label="Choose Pokemon"
+            label="Select Theme"
           /> */}
           <Snackbar
             open={this.state.open}
-            message="New Pokemon Chosen"
+            message="New Theme Selected"
             autoHideDuration={4000}
             onRequestClose={this.handleRequestClose}
           />
@@ -60,4 +60,4 @@ class userPokemon extends Component {
   }
 }
 
-export default userPokemon;
+export default userTheme;
