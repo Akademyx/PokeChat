@@ -34,7 +34,6 @@ app.get('/build/bundle.js', (req,res) => {
   res.sendStatus(200);
 })
 
-
 // MIDDLEWARE
 app.post('/checkCredentials', userController.checkCredentials);
 app.post('/addUser', userController.createUser);

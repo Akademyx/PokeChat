@@ -1,5 +1,8 @@
 #userOptionsWrapper {
-  width: 400px;
+  width: 200px;
   height: 400px;
   background-color: white;
+  z-index: 2;
+  position: fixed;
+  float: right;  
 }

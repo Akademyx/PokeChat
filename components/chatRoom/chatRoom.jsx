@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom';
 import styles from './chatRoom.css';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/TextField';
@@ -9,13 +12,18 @@ import UserOptions from './../userOptions/userOptions.jsx';
 class ChatRoom extends Component {
   constructor(props, context) {
 	super(props, context);
+
     this.state = {
 			messages: [],
 			renderedMessageCount: 0,
 			userOptionsToggleShow: {
 				display: 'none'
-			}
+			},
+			//TEST
+			rerouteToLogin: false
+			//TEST
 		}
+
 		this.getMessages = this.getMessages.bind(this);		
 		this.addMessage = this.addMessage.bind(this);
 		this.checkForMessageUpdates = this.checkForMessageUpdates.bind(this);
@@ -80,10 +88,15 @@ class ChatRoom extends Component {
 	}
 
 	toggleUserOptions () {
-		this.setState({userOptionsToggleShow: 'block'});
+		if (this.state.userOptionsToggleShow.display === 'none') this.setState({userOptionsToggleShow: {display: 'block'}});
+		else this.setState({userOptionsToggleShow: {display: 'none'}});
 	}
   
 	render() {
+		//TEST
+		if(this.state.rerouteToLogin == true) return (<Redirect to='/'/>) 
+		//TEST
+	  else {
 		let displayMessages = [];
 		for (let i = 0; i < this.state.messages.length; i++) {
 			// if messages user name equals state user's name
@@ -163,8 +176,10 @@ class ChatRoom extends Component {
 			<div>
 				<header id='chatHeader' style={ headerStyle }>{ 'POKE CHAT' }
 				{/* render userSettings component */}
-				<div id='userOptionsWrapper' style={ this.state.userOptionsToggleShow }>
-					<UserOptions></UserOptions>
+					<button id='userOptionsButton' onClick={ () => { this.toggleUserOptions() }}></button>
+				<div id='userOptionsWrapper' style={this.state.userOptionsToggleShow}>
+					{/* <UserOptions appContext={this.props.appContext} redirectToLogin={this.props.redirectToLogin} chatRoomContext={this}></UserOptions> */}
+					<UserOptions appContext={this.props.appContext} redirectToLogin={this.props.redirectToLogin} chatRoomContext={this}></UserOptions>
 				</div>
 				</header>
 				<div id='usersContainer'>{ displayMessages }</div>
@@ -182,7 +197,8 @@ class ChatRoom extends Component {
 				</div>
 			</div>
     	)
-  }
+		}
+	}
 }
 
 export default ChatRoom;

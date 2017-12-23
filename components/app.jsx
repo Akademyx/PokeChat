@@ -10,9 +10,11 @@ class App extends Component {
     super(props, context);
     this.state = {
       user: null,
+      // redirectToLogin: false
     };
   }
 
+  // child components of these below inherit routing abilities
   render() {
     return (
       <div>
@@ -20,6 +22,7 @@ class App extends Component {
           <Route exact path="/" render={props => <Login user={this.state.user} appContext={this} {...props} />} />
           <Route exact path="/signup" render={props => <SignUp user={this.state.user} appContext={this} {...props} />} />
           <Route exact path="/chatroom" render={props => <ChatRoom user={this.state.user} appContext={this} {...props} />} />
+          {/* <Route exact path="/chatroom" render={props => <ChatRoom user={this.state.user} appContext={this} redirectToLogin={this.state.redirectToLogin} {...props} />} /> */}
         </Switch>
       </div>
       )
