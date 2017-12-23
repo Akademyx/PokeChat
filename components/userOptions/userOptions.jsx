@@ -26,9 +26,13 @@ class userOptions extends Component {
   render () {
   // if (this.props.redirectToLogin === true) return (<Redirect to='/'/>);
   // if (this.state.redirectToLogin === true) return (<Redirect to='/'/>);  
+    let userPokemonButtonStyle = {
+      backgroundImage: this.props.user.pokemon
+    }
     return (
       <div id='userOptionsWrapper'>
-        <button onClick={ () => { this.logOut() }}></button>
+        {/* <button onClick={ () => { this.logOut() }}></button> */}
+        <button id='userPokemonButton' style={userPokemonButtonStyle} onClick={ () => { this.logOut() }}>{'Logout'}</button>
       </div>
       )
     }

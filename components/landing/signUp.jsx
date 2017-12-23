@@ -101,7 +101,7 @@ class SignUp extends Component {
               <FlatButton label='Already a PokeChat User?' containerElement={<Link to="/" />} linkButton={true}/>
 					</div>
           <div id="pokemonWrapper">
-            <button id='charmander' onClick={ () => { this.addPokemon('charizard') }}></button>
+            <button id='charmander' onClick={ () => { this.addPokemon('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909') }}></button>
             <button id='squirtle' onClick={ () => { this.addPokemon('squirtle') }}></button>
             <button id='raichu' onClick={ () => { this.addPokemon('raichu') }}></button>
             <button id='bulbasaur' onClick={ () => { this.addPokemon('bulbasaur') }}></button>

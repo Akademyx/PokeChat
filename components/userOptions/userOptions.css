@@ -6,3 +6,13 @@
   position: fixed;
   float: right;  
 }
+
+#userPokemonButton {
+	background-image: url('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909');
+	/* background-position: 30% 10%; */
+	background-size: 100px 100px;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	display: inline-block;
+} 
