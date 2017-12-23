@@ -16,3 +16,11 @@
 	border-radius: 50%;
 	display: inline-block;
 } 
+hr {
+	width: 80%;
+	border-width: .9px;
+}
+
+#pokemonWrapperUserDrawer {
+	margin: auto;
+}
