@@ -14,7 +14,7 @@ import UserDrawer from './../userOptions/userDrawer.jsx';
 class ChatRoom extends Component {
   constructor(props, context) {
 	super(props, context);
-
+	
     this.state = {
 			messages: [],
 			renderedMessageCount: 0,
@@ -23,13 +23,12 @@ class ChatRoom extends Component {
 			},
 			showSpeechBubble: 'show',
 			hasRenderedOnceAlready: false,
-			//TEST
+			// TEST
 			rerouteToLogin: false,
+			// TEST
 			greeting: null,
 			greetingPunctuation: '!'
-			//TEST
 		}
-
 		this.getMessages = this.getMessages.bind(this);		
 		this.addMessage = this.addMessage.bind(this);
 		this.checkForMessageUpdates = this.checkForMessageUpdates.bind(this);
@@ -55,9 +54,6 @@ class ChatRoom extends Component {
 			this.setState({greeting: 'Up late, '});
 			this.setState({greetingPunctuation: '?'});
 		}
-	}
-
-	componentDidUpdate () {
 	}
 
 	addMessage (message, that) {
@@ -200,7 +196,8 @@ class ChatRoom extends Component {
 		}
 		
 		let userPokemonButtonStyle = {
-			backgroundImage: 'url(https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909)',
+			// backgroundImage: 'url(https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909)',
+			backgroundImage: 'url(' + this.props.user.pokemon + ')',
 			backgroundSize: '100px 100px',
 			position: 'absolute',
 			top: '80px',
@@ -217,8 +214,7 @@ class ChatRoom extends Component {
 					<button id='userOptionsButton' style={userPokemonButtonStyle} onClick={ () => { this.toggleUserOptions() }}></button>
 					<div className='speech-bubble fadeOut' style={{display: this.state.showSpeechBubble}} onClick={ () => { this.toggleSpeechBubble() }}>{this.state.greeting}{this.props.user.name}{this.state.greetingPunctuation}</div>
 				<div id='userOptionsWrapper' style={this.state.userOptionsToggleShow}>
-					{/* <UserOptions appContext={this.props.appContext} redirectToLogin={this.props.redirectToLogin} chatRoomContext={this}></UserOptions> */}
-					<UserOptions appContext={this.props.appContext} redirectToLogin={this.props.redirectToLogin} user={this.props.user} chatRoomContext={this}></UserOptions>
+					<UserOptions appContext={this.props.appContext} chatRoomContext={this} redirectToLogin={this.props.redirectToLogin} user={this.props.user}></UserOptions>
 				</div>
 				<div id="userDrawerWrapper">
 					<UserDrawer appContext={this.props.appContext}user={this.props.user}></UserDrawer>

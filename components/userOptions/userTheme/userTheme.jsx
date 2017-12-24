@@ -35,16 +35,13 @@ class userTheme extends Component {
 
   updateUserTheme (newTheme, that) {
     axios.post('/updateUser', {
-      newThemeColor: newTheme,
-      ID: that.props.user._id
-      // params: {
-			// 	ID: that.props.user
-			// }
+      propertyToUpdate: 'themeColor',
+      newPropertyValue: newTheme,
+      id: that.props.user._id,
     })
     .then(function (response) {
-      console.log('RESPONSE FROM UPDATE', response);
-      // set state of app level user to response 
-      console.log('USER FROM APP CONTEXT IN USER THEME', that.props.appContext.user);
+      console.log(response);
+      // set state of app level user to response.data object
       that.props.appContext.setState({user: response.data});
     })
     .catch(function (error) {

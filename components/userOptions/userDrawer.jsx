@@ -43,7 +43,7 @@ class userDrawer extends Component {
         >
           <UserSettings userDrawerContext={this}></UserSettings>
           <hr></hr>
-          <UserPokemon></UserPokemon>
+          <UserPokemon appContext={this.props.appContext} user={this.props.user}></UserPokemon>
           <hr></hr>
           {/* <br></br> */}
           <UserTheme appContext={this.props.appContext} user={this.props.user}></UserTheme>

@@ -102,10 +102,10 @@ class SignUp extends Component {
 					</div>
           <div id="pokemonWrapper">
             <button id='charmander' onClick={ () => { this.addPokemon('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909') }}></button>
-            <button id='squirtle' onClick={ () => { this.addPokemon('squirtle') }}></button>
-            <button id='raichu' onClick={ () => { this.addPokemon('raichu') }}></button>
-            <button id='bulbasaur' onClick={ () => { this.addPokemon('bulbasaur') }}></button>
-            <button id='onyx' onClick={ () => { this.addPokemon('onyx') }}></button>
+            <button id='squirtle' onClick={ () => { this.addPokemon('https://seeklogo.com/images/S/squirtle-logo-0E4AE193EE-seeklogo.com.png') }}></button>
+            <button id='raichu' onClick={ () => { this.addPokemon('http://vignette3.wikia.nocookie.net/roblox-pokemon-project/images/3/33/Raichu-wallpaper.png/revision/latest?cb=20161110022821') }}></button>
+            <button id='bulbasaur' onClick={ () => { this.addPokemon('https://vignette.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758') }}></button>
+            <button id='onyx' onClick={ () => { this.addPokemon('https://pre00.deviantart.net/959a/th/pre/f/2016/075/4/6/095_onix_by_rayo123000-d9vbjj3.png') }}></button>
           </div>
           <br></br>
           <div id="colorWrapper">

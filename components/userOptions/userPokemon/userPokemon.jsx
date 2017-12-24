@@ -6,6 +6,7 @@ import Snackbar from 'material-ui/Snackbar';
 import { lchmod } from 'fs';
 import {orange500, deepOrange500 } from 'material-ui/styles/colors';
 import styles from './userPokemon.css';
+import axios from 'axios';
 
 // undocked 
 class userPokemon extends Component {
@@ -17,6 +18,7 @@ class userPokemon extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.updateUserPokemon = this.updateUserPokemon.bind(this);
   }
 
   handleClick () {
@@ -31,6 +33,23 @@ class userPokemon extends Component {
     });
   };
 
+  updateUserPokemon (newPokemon, that) {
+    axios.post('/updateUser', {
+      propertyToUpdate: 'pokemon',
+      newPropertyValue: newPokemon,
+      id: that.props.user._id,
+    })
+    .then(function (response) {
+      console.log('RESPONSE IN UPDATE USER POKEMON', response);
+      // set state of app level user to response.data object
+      that.props.appContext.setState({user: response.data});
+    })
+    .catch(function (error) {
+      console.log(error);
+      console.log('ERROR IN UPDATE USER METHOD');
+    })
+  }
+
   render() {
     
     return (
@@ -38,11 +57,11 @@ class userPokemon extends Component {
         <div id='textFieldWrapper'>
           <h4 id="choosePokemonHeader">{'Choose a Different Pokemon'}</h4>
           <div id="pokemonWrapperUserDrawer">
-            <button id='charmander' onClick={ () => { this.addPokemon('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909') }}></button>
-            <button id='squirtle' onClick={ () => { this.addPokemon('squirtle') }}></button>
-            <button id='raichu' onClick={ () => { this.addPokemon('raichu') }}></button>
-            <button id='bulbasaur' onClick={ () => { this.addPokemon('bulbasaur') }}></button>
-            <button id='onyx' onClick={ () => { this.addPokemon('onyx') }}></button>
+            <button id='charmander' onClick={ () => { this.updateUserPokemon('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909', this) }}></button>
+            <button id='squirtle' onClick={ () => { this.updateUserPokemon('squirtle', this) }}></button>
+            <button id='raichu' onClick={ () => { this.updateUserPokemon('raichu', this) }}></button>
+            <button id='bulbasaur' onClick={ () => { this.updateUserPokemon('bulbasaur', this) }}></button>
+            <button id='onyx' onClick={ () => { this.updateUserPokemon('onyx', this) }}></button>
           </div>
           {/* <FlatButton
             onClick={this.handleClick}

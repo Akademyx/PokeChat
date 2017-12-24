@@ -41,23 +41,17 @@ let UserController = {
 		});
 	},
 	updateUser(req, res) {
-		// console.log('UPDATE THEME REQ.PARAMS', req.params);
-		console.log('REQUEST', req);
-
-		let id = req.body.ID;
-		let newThemeColor = req.body.newThemeColor;
-
+		let propertyToUpdate = req.body.propertyToUpdate;
+		let newPropertyValue = req.body.newPropertyValue;
+		let id = req.body.id;		
 
 		User.findById(id, function (err, user) {
 			if (err) return handleError(err);
-			
-			// console.log('UPDATE THEME REQ.BODY', req.params);
-			// let propertyToUpdate = req.body.propertyToUpdate;
-			// let newValue = req.body.newValue;
-
-			// user.set({ size: 'large' });
-			user.set({ themeColor: newThemeColor });
-
+			// check for property type to update:
+			if (propertyToUpdate === 'themeColor') user.set({themeColor: newPropertyValue});
+			else if (propertyToUpdate === 'pokemon') user.set({pokemon: newPropertyValue});
+			else if (propertyToUpdate === 'password')	user.set({password: newPropertyValue});
+			// no 'else' yet. leave room for other possible updates on the user document	
 			user.save(function (err, updatedUser) {
 				if (err) return handleError(err);
 				res.send(updatedUser);
@@ -65,9 +59,5 @@ let UserController = {
 		});
 	}
 };
-
-
-
-
 
 module.exports = UserController;
