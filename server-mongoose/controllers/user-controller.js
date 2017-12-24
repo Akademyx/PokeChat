@@ -43,21 +43,26 @@ let UserController = {
 	updateUser(req, res) {
 		// console.log('UPDATE THEME REQ.PARAMS', req.params);
 		console.log('REQUEST', req);
-		// User.findById(id, function (err, user) {
-		// 	if (err) return handleError(err);
+
+		let id = req.body.ID;
+		let newThemeColor = req.body.newThemeColor;
+
+
+		User.findById(id, function (err, user) {
+			if (err) return handleError(err);
 			
-		// 	// console.log('UPDATE THEME REQ.BODY', req.params);
-		// 	let propertyToUpdate = req.body.propertyToUpdate;
-		// 	let newValue = req.body.newValue;
+			// console.log('UPDATE THEME REQ.BODY', req.params);
+			// let propertyToUpdate = req.body.propertyToUpdate;
+			// let newValue = req.body.newValue;
 
-		// 	// user.set({ size: 'large' });
-		// 	user.set({ propertyToUpdate: newValue });
+			// user.set({ size: 'large' });
+			user.set({ themeColor: newThemeColor });
 
-		// 	user.save(function (err, updatedUser) {
-		// 		if (err) return handleError(err);
-		// 		res.send(updatedUser);
-		// 	});
-		// });
+			user.save(function (err, updatedUser) {
+				if (err) return handleError(err);
+				res.send(updatedUser);
+			});
+		});
 	}
 };
 
