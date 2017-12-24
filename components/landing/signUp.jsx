@@ -43,7 +43,7 @@ class SignUp extends Component {
         themeColor: this.state.userColor
       })
       .then(function (response) {
-        console.log(response);
+        console.log('SIGN UP RESPONSE', response);
         document.getElementById("nameField").value = '', 
         document.getElementById("passwordField").value = ''
         // if response data is an empty string this means the user isnt found in the database. 

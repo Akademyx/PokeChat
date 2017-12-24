@@ -36,7 +36,7 @@ class Login extends Component {
 				password: passwordVal
 			})
 			.then(function (response) {
-				console.log(response);
+				console.log('LOGIN RESPONSE', response);
 				document.getElementById("nameField").value = '', 
 				document.getElementById("passwordField").value = ''
 				// if response data is an empty string this means the user isnt found in the database. 

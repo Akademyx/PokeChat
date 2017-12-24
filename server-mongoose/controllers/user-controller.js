@@ -15,7 +15,9 @@ let UserController = {
 			if (err) {
 				res.status(400).send('error');
 			} else {
+				console.log('RESPONSE IN CREATE USER', savedDoc);
 				res.json({
+					_id: savedDoc._id,
 					name: req.body.name,
 					password: req.body.password,
 					pokemon: req.body.pokemon,
