@@ -44,6 +44,8 @@ class userTheme extends Component {
     .then(function (response) {
       console.log('RESPONSE FROM UPDATE', response);
       // set state of app level user to response 
+      console.log('USER FROM APP CONTEXT IN USER THEME', that.props.appContext.user);
+      that.props.appContext.setState({user: response.data});
     })
     .catch(function (error) {
       console.log(error);

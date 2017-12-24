@@ -221,7 +221,7 @@ class ChatRoom extends Component {
 					<UserOptions appContext={this.props.appContext} redirectToLogin={this.props.redirectToLogin} user={this.props.user} chatRoomContext={this}></UserOptions>
 				</div>
 				<div id="userDrawerWrapper">
-					<UserDrawer user={this.props.user}></UserDrawer>
+					<UserDrawer appContext={this.props.appContext}user={this.props.user}></UserDrawer>
 				</div>
 				</header>
 				<div id='usersContainer'>{ displayMessages }</div>
