@@ -46,7 +46,7 @@ class userDrawer extends Component {
           <UserPokemon></UserPokemon>
           <hr></hr>
           {/* <br></br> */}
-          <UserTheme></UserTheme>
+          <UserTheme user={this.props.user}></UserTheme>
           <br></br>
           <hr></hr>
           <MenuItem onClick={this.handleClose}>LOG OUT</MenuItem>

@@ -1,5 +1,7 @@
 const User = require('../models/user-model');
 const mongoose = require('mongoose');
+const express = require('express');
+const app = express();
 
 let UserController = {
 	createUser(req, res) {
@@ -37,6 +39,25 @@ let UserController = {
 			res.end(JSON.stringify(users));
 			console.log(users);
 		});
+	},
+	updateUser(req, res) {
+		// console.log('UPDATE THEME REQ.PARAMS', req.params);
+		console.log('REQUEST', req);
+		// User.findById(id, function (err, user) {
+		// 	if (err) return handleError(err);
+			
+		// 	// console.log('UPDATE THEME REQ.BODY', req.params);
+		// 	let propertyToUpdate = req.body.propertyToUpdate;
+		// 	let newValue = req.body.newValue;
+
+		// 	// user.set({ size: 'large' });
+		// 	user.set({ propertyToUpdate: newValue });
+
+		// 	user.save(function (err, updatedUser) {
+		// 		if (err) return handleError(err);
+		// 		res.send(updatedUser);
+		// 	});
+		// });
 	}
 };
 

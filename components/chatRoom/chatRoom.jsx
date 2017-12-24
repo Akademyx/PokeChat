@@ -40,7 +40,7 @@ class ChatRoom extends Component {
 
 	componentDidMount () {
 		this.getMessages(this);
-		setInterval(this.checkForMessageUpdates, 100);
+		// setInterval(this.checkForMessageUpdates, 100);
 		setTimeout(this.toggleSpeechBubble, 13000);	
 		if (this.state.hasRenderedOnceAlready === false) {
 			this.scrollToBottom();
@@ -48,7 +48,6 @@ class ChatRoom extends Component {
 		}
 		var date = new Date();
 		var current_hour = date.getHours();
-		console.log('CURRENT HOUR', current_hour);
 		if (current_hour >= 5 && current_hour < 12) this.setState({greeting: 'Good morning, '});
 		else if (current_hour >= 12 && current_hour < 18) this.setState({greeting: 'Good afternoon, '});
 		else if (current_hour >= 18 && current_hour <= 22) this.setState({greeting: 'Good evening, '});
@@ -222,7 +221,7 @@ class ChatRoom extends Component {
 					<UserOptions appContext={this.props.appContext} redirectToLogin={this.props.redirectToLogin} user={this.props.user} chatRoomContext={this}></UserOptions>
 				</div>
 				<div id="userDrawerWrapper">
-					<UserDrawer></UserDrawer>
+					<UserDrawer user={this.props.user}></UserDrawer>
 				</div>
 				</header>
 				<div id='usersContainer'>{ displayMessages }</div>

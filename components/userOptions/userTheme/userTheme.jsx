@@ -6,8 +6,9 @@ import Snackbar from 'material-ui/Snackbar';
 import { lchmod } from 'fs';
 import {orange500, deepOrange500 } from 'material-ui/styles/colors';
 import styles from './userTheme.css';
+import axios from 'axios';
 
-// undocked 
+// undocked drawer
 class userTheme extends Component {
 
   constructor(props) {
@@ -17,6 +18,7 @@ class userTheme extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.updateUserTheme = this.updateUserTheme.bind(this);
   }
 
   handleClick () {
@@ -31,6 +33,24 @@ class userTheme extends Component {
     });
   };
 
+  updateUserTheme (newTheme, that) {
+    axios.post('/updateUser', {
+      themeColor: newTheme,
+      ID: that.props.user._id
+      // params: {
+			// 	ID: that.props.user
+			// }
+    })
+    .then(function (response) {
+      console.log(response);
+      // set state of app level user to response 
+    })
+    .catch(function (error) {
+      console.log(error);
+      console.log('ERROR IN UPDATE USER METHOD');
+    })
+  }
+
   render() {
     
     return (
@@ -38,11 +58,11 @@ class userTheme extends Component {
         <div id='textFieldWrapper'>
           <h4 id="chooseThemeHeader">{'Select Another Theme'}</h4>
           <div id="colorWrapperUserDrawer">
-            <button id='red' onClick={ () => { this.addColor('rgb(206, 91, 91)') }}></button>
-            <button id='blue' onClick={ () => { this.addColor('rgb(92, 149, 245)') }}></button>
-            <button id='green' onClick={ () => { this.addColor('rgb(121, 176, 121)') }}></button>
-            <button id='purple' onClick={ () => { this.addColor('rgb(148, 81, 148)') }}></button>
-            <button id='orange' onClick={ () => { this.addColor('rgb(240, 184, 87)') }}></button>
+            <button id='red' onClick={ () => { this.updateUserTheme('rgb(206, 91, 91)', this) }}></button>
+            <button id='blue' onClick={ () => { this.updateUserTheme('rgb(92, 149, 245)', this) }}></button>
+            <button id='green' onClick={ () => { this.updateUserTheme('rgb(121, 176, 121)', this) }}></button>
+            <button id='purple' onClick={ () => { this.updateUserTheme('rgb(148, 81, 148)', this) }}></button>
+            <button id='orange' onClick={ () => { this.updateUserTheme('rgb(240, 184, 87)', this) }}></button>
           </div>
           {/* <FlatButton
             onClick={this.handleClick}
