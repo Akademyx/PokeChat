@@ -35,7 +35,7 @@ module.exports = {
         loaders: ['style-loader', 'css-loader']
       }
     ]
-  }
+  },
 }
 
 console.log(__dirname)

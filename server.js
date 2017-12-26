@@ -34,6 +34,14 @@ app.get('/build/bundle.js', (req,res) => {
   res.setHeader('content-type', 'text/html; charset=UTF-8');
   res.sendStatus(200);
 })
+// chatRoom
+app.get('/chatroom', (req,res) => {
+  res.redirect('/');
+})
+// app.get('/chatroom', (req,res) => {
+//   res.setHeader('content-type', 'text/html; charset=UTF-8');
+//   res.sendStatus(200);
+// })
 
 // MIDDLEWARE
 app.post('/checkCredentials', userController.checkCredentials);
@@ -46,6 +54,15 @@ app.get('/getMessages', messageController.getAllMessages);
 app.get('/checkForUpdates', messageController.getAllMessages);
 
 app.get('/logout', logoutController.redirectToLanding);
+
+// catch all
+app.get('/*', (req,res) => {
+  res.sendfile('./index.html');
+})
+app.get('/*', (req,res) => {
+  res.setHeader('content-type', 'text/html; charset=UTF-8');
+  res.sendStatus(200);
+})
 
 app.listen(9000);
 
