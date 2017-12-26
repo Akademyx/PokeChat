@@ -34,7 +34,7 @@ app.get('/build/bundle.js', (req,res) => {
   res.setHeader('content-type', 'text/html; charset=UTF-8');
   res.sendStatus(200);
 })
-// chatRoom
+// chatRoom refresh redirects to landing (login)
 app.get('/chatroom', (req,res) => {
   res.redirect('/');
 })

@@ -32,9 +32,9 @@ class Login extends Component {
 		this.handleRequestClose = this.handleRequestClose.bind(this);
 	}
 
-	componentDidMount () {
-		console.log('USER: ' , this.props.appContext.state.user);
-	}
+	// componentDidMount () {
+	// 	console.log('USER: ' , this.props.appContext.state.user);
+	// }
 
 	submitLoginCredentials (nameVal, passwordVal, that) {
 		if (nameVal === '' || passwordVal === '') that.handleClick();
