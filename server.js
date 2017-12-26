@@ -4,12 +4,8 @@ const app = express();
 const path = require('path');
 const userController = require('./server-mongoose/controllers/user-controller');
 const messageController = require('./server-mongoose/controllers/message-controller');
+const logoutController = require('./server-mongoose/controllers/logout-controller');
 const bodyParser = require('body-parser');
-
-// test for use req.params
-app.use(express.json());
-app.use(express.urlencoded());
-// test
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -48,6 +44,8 @@ app.post('/updateUser', userController.updateUser);
 app.post('/addMessage', messageController.createMessage);
 app.get('/getMessages', messageController.getAllMessages);
 app.get('/checkForUpdates', messageController.getAllMessages);
+
+app.get('/logout', logoutController.redirectToLanding);
 
 app.listen(9000);
 

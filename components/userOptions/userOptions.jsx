@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom';
 import styles from './userOptions.css';
+import axios from 'axios';
 
 class userOptions extends Component {
 	constructor(props, context) {
@@ -19,8 +20,17 @@ class userOptions extends Component {
     appState.setState({user: {id: null, name: null, password: null, pokemon: null, themeColor: null, _v: 0, id: null}});
     // appState.setState({redirectToLogin: true});
     // this.setState({redirectToLogin: true});
-    this.props.chatRoomContext.setState({rerouteToLogin: true});
-    appState.setState(appState.state);
+    // this.props.chatRoomContext.setState({rerouteToLogin: true});
+    // appState.setState(appState.state);
+    axios.get('/logout', {
+
+    })
+    .then(function (response) {
+
+    })
+    .catch(function (error) {
+
+    });
   }
 
   render () {

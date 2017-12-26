@@ -22,7 +22,6 @@ class ChatRoom extends Component {
 				display: 'none'
 			},
 			showSpeechBubble: 'show',
-			hasRenderedOnceAlready: false,
 			// TEST
 			rerouteToLogin: false,
 			// TEST
@@ -39,12 +38,9 @@ class ChatRoom extends Component {
 
 	componentDidMount () {
 		this.getMessages(this);
-		// setInterval(this.checkForMessageUpdates, 100);
+		setInterval(this.checkForMessageUpdates, 100);
 		setTimeout(this.toggleSpeechBubble, 13000);	
-		if (this.state.hasRenderedOnceAlready === false) {
-			this.scrollToBottom();
-			this.setState({hasRenderedOnceAlready: true});			
-		}
+	
 		var date = new Date();
 		var current_hour = date.getHours();
 		if (current_hour >= 5 && current_hour < 12) this.setState({greeting: 'Good morning, '});
@@ -54,6 +50,7 @@ class ChatRoom extends Component {
 			this.setState({greeting: 'Up late, '});
 			this.setState({greetingPunctuation: '?'});
 		}
+		// this.scrollToBottom();
 	}
 
 	addMessage (message, that) {
@@ -113,7 +110,7 @@ class ChatRoom extends Component {
 	}
 
 	scrollToBottom () {
-		window.scrollTo(0, document.body.scrollHeight);				
+		this.el.scrollIntoView({ behaviour: 'smooth' });			
 	}
 
 	render() {
@@ -196,7 +193,6 @@ class ChatRoom extends Component {
 		}
 		
 		let userPokemonButtonStyle = {
-			// backgroundImage: 'url(https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909)',
 			backgroundImage: 'url(' + this.props.user.pokemon + ')',
 			backgroundSize: '100px 100px',
 			position: 'absolute',
@@ -210,7 +206,6 @@ class ChatRoom extends Component {
   	return (
 			<div>
 				<header id='chatHeader' style={ headerStyle }>{ 'POKE CHAT' }
-				{/* render userSettings component */}
 					<button id='userOptionsButton' style={userPokemonButtonStyle} onClick={ () => { this.toggleUserOptions() }}></button>
 					<div className='speech-bubble fadeOut' style={{display: this.state.showSpeechBubble}} onClick={ () => { this.toggleSpeechBubble() }}>{this.state.greeting}{this.props.user.name}{this.state.greetingPunctuation}</div>
 				<div id='userOptionsWrapper' style={this.state.userOptionsToggleShow}>
@@ -220,7 +215,7 @@ class ChatRoom extends Component {
 					<UserDrawer appContext={this.props.appContext}user={this.props.user}></UserDrawer>
 				</div>
 				</header>
-				<div id='usersContainer'>{ displayMessages }</div>
+				<div id='messagesContainer'>{ displayMessages }</div>
 				<div id='chatFooter'>
 					<TextField
 						id="messageField"
@@ -233,6 +228,7 @@ class ChatRoom extends Component {
 						)
 					}}/>
 				</div>
+				{/* <div ref={el => { this.el = el; }}></div> */}
 			</div>
     	)
 		}

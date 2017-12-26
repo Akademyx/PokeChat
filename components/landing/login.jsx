@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import styles from './landing.css';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import Snackbar from 'material-ui/Snackbar';
 import {orange500, deepOrange500 } from 'material-ui/styles/colors';
 import axios from 'axios';
 
@@ -23,13 +24,16 @@ class Login extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			redirectToChatRoom: false
+			redirectToChatRoom: false,
+			open: false
 		};
 		this.submitLoginCredentials = this.submitLoginCredentials.bind(this);
+		this.handleClick = this.handleClick.bind(this);
+		this.handleRequestClose = this.handleRequestClose.bind(this);
 	}
 
 	submitLoginCredentials (nameVal, passwordVal, that) {
-		if (nameVal === '' || passwordVal === '') alert('please enter a name and password!');
+		if (nameVal === '' || passwordVal === '') that.handleClick();
 		else {
 			axios.post('/checkCredentials', {
 				name: nameVal,
@@ -41,7 +45,9 @@ class Login extends Component {
 				document.getElementById("passwordField").value = ''
 				// if response data is an empty string this means the user isnt found in the database. 
 				// if is empty, alert the user of incorrect credentials
-				if (response.data === '') alert ('incorrect password or username');
+
+				if (response.data === '') that.handleClick();
+
 				else {
 					// re-render and route to chatroom with react router
 					let appState = that.props.appContext;	
@@ -55,7 +61,19 @@ class Login extends Component {
 				console.log(error);
 			});
 		}
-  }
+	}
+
+	handleClick () {
+		this.setState({
+			open: true,
+		})
+	}
+	
+	handleRequestClose () {
+    this.setState({
+      open: false,
+    });
+  };
 	
 	render() {
 		// if login credentials come back true, redirect to chatroom:
@@ -85,6 +103,12 @@ class Login extends Component {
 							)
 							}}/>
 						<FlatButton label='First Time? Sign Up!' containerElement={<Link to="/signup" />} linkButton={true}/>
+						<Snackbar
+            open={this.state.open}
+            message="Please Enter A Correct Name and Password"
+            autoHideDuration={4000}
+            onRequestClose={this.handleRequestClose}
+          />
 					</div>
 				</div>
 			</div>
