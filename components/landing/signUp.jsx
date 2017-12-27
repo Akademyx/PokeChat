@@ -80,17 +80,17 @@ class SignUp extends Component {
 			<div>
 				<div className="landingBox">
         <br></br>
-        <h1>Pokechat</h1>
+        <h1>PokeChat</h1>
 					<div id="loginForm">
 					<TextField
 							id="nameField"
-							hintText="Name"
+							hintText="Choose a Username"
 							hintStyle={fieldStyles.colorOrange}
 						/>
 						<TextField
 							id="passwordField"
 							type="password"
-							hintText="Password"
+							hintText="Choose a Password"
 							hintStyle={fieldStyles.colorDeepOrange}
 						/>
 						<FlatButton label="Sign Up" fullWidth={true} onClick={ () => {

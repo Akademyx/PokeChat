@@ -192,7 +192,7 @@ class ChatRoom extends Component {
 			textAlign: 'center',
 			borderBottom: '1px solid white',
 			backgroundColor: this.props.user.themeColor,
-			opacity: '0.99'
+			opacity: '0.99',
 		}
 		
 		let userPokemonButtonStyle = {
@@ -208,7 +208,8 @@ class ChatRoom extends Component {
 
   	return (
 			<div>
-				<header id='chatHeader' style={ headerStyle }>{ 'POKE CHAT' }
+				<header id='chatHeader' style={ headerStyle }>
+					<h5>{ 'POKE CHAT' }</h5>
 					<button id='userOptionsButton' style={userPokemonButtonStyle} onClick={ () => { this.toggleUserOptions() }}></button>
 					<div className='speech-bubble fadeOut' style={{display: this.state.showSpeechBubble}} onClick={ () => { this.toggleSpeechBubble() }}>{this.state.greeting}{this.props.user.name}{this.state.greetingPunctuation}</div>
 				<div id='userOptionsWrapper' style={this.state.userOptionsToggleShow}>

@@ -88,11 +88,11 @@ class Login extends Component {
 			<div>
 				<div className="landingBox">
 				<br></br>
-				<h1>Pokechat</h1>
+				<h1>PokeChat</h1>
 					<div id="loginForm">
 						<TextField
 							id="nameField"
-							hintText="Name"
+							hintText="Username"
 							hintStyle={fieldStyles.colorOrange}
 						/>
 						<TextField
