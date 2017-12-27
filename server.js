@@ -4,7 +4,6 @@ const app = express();
 const path = require('path');
 const userController = require('./server-mongoose/controllers/user-controller');
 const messageController = require('./server-mongoose/controllers/message-controller');
-const logoutController = require('./server-mongoose/controllers/logout-controller');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
@@ -38,10 +37,6 @@ app.get('/build/bundle.js', (req,res) => {
 app.get('/chatroom', (req,res) => {
   res.redirect('/');
 })
-// app.get('/chatroom', (req,res) => {
-//   res.setHeader('content-type', 'text/html; charset=UTF-8');
-//   res.sendStatus(200);
-// })
 
 // MIDDLEWARE
 app.post('/checkCredentials', userController.checkCredentials);
@@ -52,8 +47,6 @@ app.post('/updateUser', userController.updateUser);
 app.post('/addMessage', messageController.createMessage);
 app.get('/getMessages', messageController.getAllMessages);
 app.get('/checkForUpdates', messageController.getAllMessages);
-
-app.get('/logout', logoutController.redirectToLanding);
 
 // catch all
 app.get('/*', (req,res) => {

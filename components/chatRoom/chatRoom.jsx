@@ -32,11 +32,12 @@ class ChatRoom extends Component {
 		this.toggleUserOptions = this.toggleUserOptions.bind(this);
 		this.toggleSpeechBubble = this.toggleSpeechBubble.bind(this);
 		this.scrollToBottom = this.scrollToBottom.bind(this);
+		// this.checkInterval = this.checkInterval.bind(this);
 	}
 
 	componentDidMount () {
 		this.getMessages(this);
-		setInterval(this.checkForMessageUpdates, 100);
+		
 		setTimeout(this.toggleSpeechBubble, 13000);	
 		let current_hour = new Date().getHours();
 		if (current_hour >= 5 && current_hour < 12) this.setState({greeting: 'Good morning, ', greetingPunctuation: '!'});
@@ -44,7 +45,19 @@ class ChatRoom extends Component {
 		else if (current_hour >= 18 && current_hour <= 22) this.setState({greeting: 'Good evening, ', greetingPunctuation: '!'});
 		else this.setState({greeting: 'Up late, ', greetingPunctuation: '?'});
 		// this.scrollToBottom();
-		window.scrollTo(0, document.body.scrollHeight);		
+		window.scrollTo(0, document.body.scrollHeight);	
+		// checkInterval = setInterval(this.checkForMessageUpdates, 100);
+		this.checkInterval = setInterval(
+      () => this.checkForMessageUpdates(),
+      100
+    );
+		// checkInterval();	
+	}
+
+	componentWillUnmount () {
+		console.log('chatroom unmounted');
+		clearInterval(this.checkInterval);
+		// window.refreshcheckInterval;
 	}
 
 	addMessage (message, that) {

@@ -18,19 +18,6 @@ class userOptions extends Component {
   logOut () {
     let appState = this.props.appContext;
     appState.setState({user: {id: null, name: null, password: null, pokemon: null, themeColor: null, _v: 0, id: null}});
-    // appState.setState({redirectToLogin: true});
-    // this.setState({redirectToLogin: true});
-    // this.props.chatRoomContext.setState({rerouteToLogin: true});
-    // appState.setState(appState.state);
-    axios.get('/logout', {
-
-    })
-    .then(function (response) {
-
-    })
-    .catch(function (error) {
-
-    });
   }
 
   render () {
@@ -42,7 +29,7 @@ class userOptions extends Component {
     return (
       <div id='userOptionsWrapper'>
         {/* <button onClick={ () => { this.logOut() }}></button> */}
-        <button id='userPokemonButton' style={userPokemonButtonStyle} onClick={ () => { this.logOut() }}>{'Logout'}</button>
+        {/* <button id='userPokemonButton' style={userPokemonButtonStyle} onClick={ () => { this.logOut() }}>{'Logout'}</button> */}
       </div>
       )
     }

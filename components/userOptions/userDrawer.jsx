@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { Redirect } from 'react-router'
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -7,6 +8,7 @@ import { lchmod } from 'fs';
 import UserSettings from './userSettings/userSettings.jsx';
 import UserPokemon from './userPokemon/userPokemon.jsx';
 import UserTheme from './userTheme/userTheme.jsx';
+import axios from 'axios';
 
 // undocked 
 class userDrawer extends Component {
@@ -14,10 +16,12 @@ class userDrawer extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      open: false
+      open: false,
+      redirectToLogin: false
     };
     this.handleToggle = this.handleToggle.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleToggle () {
@@ -28,8 +32,15 @@ class userDrawer extends Component {
     this.setState({open: false});
   }
 
+  handleLogout () {
+    this.props.appContext.setState({user: {id: null, name: null, password: null, pokemon: null, themeColor: null, _v: 0, id: null}});
+    this.setState({redirectToLogin: true});    
+  }
+
   render() {
-    return (
+    if (this.state.redirectToLogin === true) return (<Redirect to='/'/>);
+    else { 
+      return (
       <div>
         <RaisedButton
           label="My Settings"
@@ -41,6 +52,7 @@ class userDrawer extends Component {
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
         >
+          <MenuItem onClick={ () => {this.handleLogout()}}>LOG OUT</MenuItem>
           <UserSettings userDrawerContext={this}></UserSettings>
           <hr></hr>
           <UserPokemon appContext={this.props.appContext} user={this.props.user}></UserPokemon>
@@ -49,10 +61,10 @@ class userDrawer extends Component {
           <UserTheme appContext={this.props.appContext} user={this.props.user}></UserTheme>
           <br></br>
           <hr></hr>
-          <MenuItem onClick={this.handleClose}>LOG OUT</MenuItem>
         </Drawer>
       </div>
-    );
+      );
+    }
   }
 }
 
