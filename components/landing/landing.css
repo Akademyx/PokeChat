@@ -15,11 +15,11 @@
 	box-shadow: 1px 1px 1px 1px #6d6c69;
 	top: 70px;
 
-	-webkit-animation:100s scroll infinite linear;
+	/* -webkit-animation:100s scroll infinite linear;
   -moz-animation:100s scroll infinite linear;
   -o-animation:100s scroll infinite linear;
   -ms-animation:100s scroll infinite linear;
-  animation:100s scroll infinite linear;
+  animation:100s scroll infinite linear; */
 }
 
 h1{
@@ -223,17 +223,30 @@ h1{
 
 .btn-wrap{
   margin:0 auto;
-	/* width:200px; */
+	width:100px;
 	/* width: 100px; */
 	/* width: 100%; */
 	padding-top:50px;
-	margin-right: 40px;
+	float: right;
+	margin-right: 10px;
+	/* margin-right: 40px; */
 }
 
-#btn-wrap {
+.btn-wrap1{
+  margin:0 auto;
+	width:100px;
+	/* width: 100px; */
+	/* width: 100%; */
+	padding-top:50px;
+	float: left;
+	margin-left: 22px;
+	/* margin-right: 40px; */
+}
+
+/* #btn-wrap {
 	padding-top:50px;
 	margin-right: 40px;
-}
+} */
 /* 
 #btn-wrap-second {
 	margin:0 auto;
@@ -263,6 +276,30 @@ a:active{
   top:4px;
   box-shadow:#c0392b 0px 3px 2px,#000 0px 3px 5px;
 } */
+
+
+.landingButtons{
+  background:#e74c3c;
+  color:#FFF;
+  position:relative;
+  padding:15px;
+  font-weight:900 !important;
+  text-transform:uppercase;
+  border-radius:5px;
+  font:14px lato;
+  opacity:0.8;
+  letter-spacing:1px;
+  text-decoration:none;
+	box-shadow:#c0392b 0px 7px 2px,#000 0px 8px 5px;
+}
+
+.landingButtons:hover{
+  opacitY:1;
+}
+.landingButtons:active{
+  top:4px;
+  box-shadow:#c0392b 0px 3px 2px,#000 0px 3px 5px;
+}
 
 
 .landingButtons{

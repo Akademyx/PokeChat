@@ -101,8 +101,8 @@ class Login extends Component {
 							hintText="Password"
 							hintStyle={fieldStyles.colorDeepOrange}
 						/>
-						{/* <div id='btn-wrapper-wrapper'> */}
-						<div className="btn-wrap">
+						<div id='btn-wrap-wrapper'>
+						<div className="btn-wrap1">
 							<a className='landingButtons' onClick={ () => { this.submitLoginCredentials(
 								document.getElementById("nameField").value, 
 								document.getElementById("passwordField").value, 
@@ -110,13 +110,13 @@ class Login extends Component {
 							) }}>Login</a>
 						</div>
 
-							<div id="btn-wrap">
-								<Link to='/signUp'>
+							<div className="btn-wrap">
+								<Link to='/signUp' style={{ textDecoration: 'none' }}>
 							{/* <Link to="/signup" id='link'>See The Form Demo</Link> */}
   								<a className='landingButtons' type='button' linkButton={true}>Sign Up</a>
 								</Link>
  							</div>
-						{/* </div> */}
+						</div>
 						{/* <FlatButton label='First Time? Sign Up!' fullWidth={true} containerElement={<Link to="/signup" />} linkButton={true}/> */}
 						<Snackbar
             open={this.state.open}
