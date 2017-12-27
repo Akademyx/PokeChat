@@ -1,10 +1,11 @@
 body {
     margin: 0;
     /* background-color: rgb(227, 237, 237); */
-    /* background-image: url('http://www.designbolts.com/wp-content/uploads/2013/02/Cubes-Grey-Seamless-Pattern-For-Website-Background.jpg'); */
-    background-image: url('http://www.designbolts.com/wp-content/uploads/2013/02/Cross-lined-embossed-Grey-Seamless-Pattern-For-Website-Background.jpg');
+    background-image: url('http://www.designbolts.com/wp-content/uploads/2013/02/Cubes-Grey-Seamless-Pattern-For-Website-Background.jpg');
+    /* background-image: url('http://www.designbolts.com/wp-content/uploads/2013/02/Cross-lined-embossed-Grey-Seamless-Pattern-For-Website-Background.jpg'); */
     background-attachment: fixed;
-    font-family: Tahoma, Geneva, sans-serif	    
+    font-family: Tahoma, Geneva, sans-serif;
+    cursor: pointer;    
 }
 #loginWrapper {
     width: 300px;

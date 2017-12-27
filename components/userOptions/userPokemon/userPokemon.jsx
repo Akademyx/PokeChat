@@ -57,7 +57,7 @@ class userPokemon extends Component {
         <div id='textFieldWrapper'>
           <h4 id="choosePokemonHeader">{'Choose a Different Pokemon'}</h4>
           <div id="pokemonWrapperUserDrawer">
-            <button id='charmander' onClick={ () => { this.updateUserPokemon('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909', this) }}></button>
+            <button id='charmander' onClick={ () => { this.updateUserPokemon('https://media.giphy.com/media/aa8oyloCKilLW/giphy.gif', this) }}></button>
             <button id='squirtle' onClick={ () => { this.updateUserPokemon('squirtle', this) }}></button>
             <button id='raichu' onClick={ () => { this.updateUserPokemon('raichu', this) }}></button>
             <button id='bulbasaur' onClick={ () => { this.updateUserPokemon('bulbasaur', this) }}></button>

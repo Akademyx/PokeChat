@@ -87,6 +87,9 @@ class Login extends Component {
 		return (
 			<div>
 				<div className="landingBox">
+				<br></br>
+        <br></br>
+        <br></br>
 					<div id="loginForm">
 					<TextField
 							id="nameField"
@@ -114,6 +117,7 @@ class Login extends Component {
             onRequestClose={this.handleRequestClose}
           />
 					</div>
+					{/* <img id='runningPikachu' src='http://rs803.pbsrc.com/albums/yy320/Darkmadkitsune/stickers_43b26a39d46182afd53aaaf9a8.gif~c200'></img> */}
 				</div>
 			</div>
 				)

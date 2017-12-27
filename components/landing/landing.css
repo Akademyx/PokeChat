@@ -1,15 +1,54 @@
 .landingBox {
 	background-color: white;
 	/* background-color:rgba(255, 255, 255, 0.5); */
-	background-image: url('https://static1.e926.net/data/8b/22/8b22c2b446f9f539693c305d7e599ef6.gif');
+	/* background-image: url('https://static1.e926.net/data/8b/22/8b22c2b446f9f539693c305d7e599ef6.gif'); */
+	/* background-image: url('https://pre00.deviantart.net/bd05/th/pre/f/2015/070/9/1/pixel_wallpaper_by_horrorfangirl-d8lb5c6.png'); */
+	/* background-image:url('https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-310944.png'); */
+	/* background-image:url('https://i.imgur.com/NNoFNWf.png'); */
 	background-size: 100% 100%;
 	margin: auto;
 	position: relative;
 	width: 500px;
 	height: 500px;
 	border: 1px rgb(222, 211, 211) solid;
-	box-shadow: 1px 1px 30px 10px #d3ccc1;
-	top: 30px;
+	box-shadow: 10px 10px 30px 4px #d3ccc1;
+	top: 70px;
+
+	/* -webkit-animation:20s scroll infinite linear;
+  -moz-animation:20s scroll infinite linear;
+  -o-animation:20s scroll infinite linear;
+  -ms-animation:20s scroll infinite linear;
+  animation:20s scroll infinite linear; */
+}
+
+@-webkit-keyframes scroll{
+  100%{
+    background-position:3000px 0px;
+  }
+}
+
+@-moz-keyframes scroll{
+  100%{
+    background-position:3000px 0px;
+  }
+}
+
+@-o-keyframes scroll{
+  100%{
+    background-position:3000px 0px;
+  }
+}
+
+@-ms-keyframes scroll{
+  100%{
+    background-position:3000px 0px;
+  }
+}
+
+@keyframes scroll{
+  100%{
+    background-position:3000px 0px;
+  }
 }
 
 #loginForm {
@@ -30,7 +69,8 @@
 }
 
 #charmander {
-	background-image: url('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909');
+	/* background-image: url('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909'); */
+	background-image: url('https://media.giphy.com/media/aa8oyloCKilLW/giphy.gif');
 	/* background-position: 30% 10%; */
 	background-size: 100px 100px;
 	height: 100px;
@@ -40,7 +80,8 @@
 } 
 
 #squirtle {
-	background-image: url('https://seeklogo.com/images/S/squirtle-logo-0E4AE193EE-seeklogo.com.png');
+	/* background-image: url('https://seeklogo.com/images/S/squirtle-logo-0E4AE193EE-seeklogo.com.png'); */
+	background-image: url('https://vignette.wikia.nocookie.net/project-pokemon/images/8/85/Squritle.gif/revision/latest?cb=20160721141840');
 	/* background-position: 30% 50%; */
 	background-size: 100px 100px;
 	height: 100px;
@@ -148,3 +189,21 @@
 	left: 0;
 	right: 80;
 } 
+
+#runningPikachu {
+	position: absolute;
+	bottom: 70px;
+	left: 50%;
+	width: 100px;
+	height: 100px;
+}
+
+/* @keyframes backgroundScroll {
+	from {background-position: 0 0;}
+	to {background-position: -180px 0px;}
+} */
+
+/* @-webkit-keyframes slide {
+	from { background-position: 0 0; }
+	to { background-position: -400px 0; }
+} */

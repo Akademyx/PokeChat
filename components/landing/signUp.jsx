@@ -79,6 +79,9 @@ class SignUp extends Component {
 		return (
 			<div>
 				<div className="landingBox">
+        <br></br>
+        <br></br>
+        <br></br>
 					<div id="loginForm">
 					<TextField
 							id="nameField"
@@ -101,7 +104,8 @@ class SignUp extends Component {
               <FlatButton label='Already a PokeChat User?' containerElement={<Link to="/" />} linkButton={true}/>
 					</div>
           <div id="pokemonWrapper">
-            <button id='charmander' onClick={ () => { this.addPokemon('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909') }}></button>
+            <button id='charmander' onClick={ () => { this.addPokemon('https://media.giphy.com/media/aa8oyloCKilLW/giphy.gif') }}></button>
+            {/* <button id='charmander' onClick={ () => { this.addPokemon('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909') }}></button> */}
             <button id='squirtle' onClick={ () => { this.addPokemon('https://seeklogo.com/images/S/squirtle-logo-0E4AE193EE-seeklogo.com.png') }}></button>
             <button id='raichu' onClick={ () => { this.addPokemon('http://vignette3.wikia.nocookie.net/roblox-pokemon-project/images/3/33/Raichu-wallpaper.png/revision/latest?cb=20161110022821') }}></button>
             <button id='bulbasaur' onClick={ () => { this.addPokemon('https://vignette.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758') }}></button>

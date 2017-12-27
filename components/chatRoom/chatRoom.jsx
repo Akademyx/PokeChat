@@ -22,11 +22,9 @@ class ChatRoom extends Component {
 				display: 'none'
 			},
 			showSpeechBubble: 'show',
-			// TEST
-			rerouteToLogin: false,
-			// TEST
 			greeting: null,
-			greetingPunctuation: '!'
+			greetingPunctuation: '!',
+			// rerouteToLogin: false
 		}
 		this.getMessages = this.getMessages.bind(this);		
 		this.addMessage = this.addMessage.bind(this);
@@ -40,9 +38,7 @@ class ChatRoom extends Component {
 		this.getMessages(this);
 		setInterval(this.checkForMessageUpdates, 100);
 		setTimeout(this.toggleSpeechBubble, 13000);	
-	
-		var date = new Date();
-		var current_hour = date.getHours();
+		let current_hour = new Date().getHours();
 		if (current_hour >= 5 && current_hour < 12) this.setState({greeting: 'Good morning, '});
 		else if (current_hour >= 12 && current_hour < 18) this.setState({greeting: 'Good afternoon, '});
 		else if (current_hour >= 18 && current_hour <= 22) this.setState({greeting: 'Good evening, '});
@@ -51,22 +47,31 @@ class ChatRoom extends Component {
 			this.setState({greetingPunctuation: '?'});
 		}
 		// this.scrollToBottom();
+		window.scrollTo(0, document.body.scrollHeight);		
 	}
 
 	addMessage (message, that) {
-		axios.post('/addMessage', {
-			message: message,
-			name: that.props.user.name,
-			password: that.props.user.password,
-			pokemon: that.props.user.pokemon,
-			themeColor: that.props.user.themeColor,
-		})
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (error) {
-			console.log(error);
-		});
+		if (message === '') {
+			this.setState({greeting: 'Hey! Make sure you enter something, '});
+			this.setState({showSpeechBubble: 'block'});
+			setTimeout(this.toggleSpeechBubble, 13000);
+		}
+		else {
+			axios.post('/addMessage', {
+				message: message,
+				name: that.props.user.name,
+				password: that.props.user.password,
+				pokemon: that.props.user.pokemon,
+				themeColor: that.props.user.themeColor,
+			})
+			.then(function (response) {
+				console.log(response);
+				document.getElementById('messageField').value = '';				
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		}
 	}
 
 	getMessages (that) {
@@ -102,7 +107,7 @@ class ChatRoom extends Component {
 
 	toggleUserOptions () {
 		if (this.state.userOptionsToggleShow.display === 'none') this.setState({userOptionsToggleShow: {display: 'block'}});
-		else this.setState({userOptionsToggleShow: {display: 'none'}});
+		else this.setState({userOptionsToggleShow: {display: 'none'}}); 
 	}
 
 	toggleSpeechBubble () {
@@ -115,9 +120,9 @@ class ChatRoom extends Component {
 
 	render() {
 		//TEST
-		if(this.state.rerouteToLogin == true) return (<Redirect to='/'/>) 
+		// if(this.state.rerouteToLogin == true) return (<Redirect to='/'/>) 
 		//TEST
-	  else {
+	  // else {
 		let displayMessages = [];
 		for (let i = 0; i < this.state.messages.length; i++) {
 			// if messages user name equals state user's name
@@ -153,7 +158,7 @@ class ChatRoom extends Component {
 				displayMessages.push(<div style={ nameStyles }>{ 'me' }</div>,<div style={ styles } key={ this.state.messages[i]._id }>{ this.state.messages[i].message }</div>,<span style={ spanStyle }></span>,<br></br>);				
 			}
 			else {
-				let styles = {
+				let messageStyles = {
 					backgroundColor: this.state.messages[i].themeColor,
 					minWidth: '30px',
 					maxWidth: '60%',
@@ -165,6 +170,7 @@ class ChatRoom extends Component {
 					marginTop: '7px',
 					marginBottom: '7px',
 				}
+
 				let nameStyles = {
 					minWidth: '80px',
 					// maxWidth: '60px',
@@ -176,7 +182,7 @@ class ChatRoom extends Component {
 					marginBottom: '7px',
 					textAlign: 'center'
 				}
-				displayMessages.push(<div style={ nameStyles }>{ this.state.messages[i].name }</div>,<div style={ styles } key={ this.state.messages[i]._id }>{ this.state.messages[i].message }</div>,<span></span>,<br></br>);
+				displayMessages.push(<div style={ nameStyles }>{ this.state.messages[i].name }</div>,<div className='message' style={ messageStyles } key={ this.state.messages[i]._id }>{ this.state.messages[i].message }</div>,<span></span>,<br></br>);
 			}
 		}
 
@@ -231,7 +237,7 @@ class ChatRoom extends Component {
 				{/* <div ref={el => { this.el = el; }}></div> */}
 			</div>
     	)
-		}
+		// }
 	}
 }
 
