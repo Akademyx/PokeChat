@@ -80,8 +80,7 @@ class SignUp extends Component {
 			<div>
 				<div className="landingBox">
         <br></br>
-        <br></br>
-        <br></br>
+        <h1>Pokechat</h1>
 					<div id="loginForm">
 					<TextField
 							id="nameField"
@@ -101,7 +100,7 @@ class SignUp extends Component {
 								this
 							)
 							}}/>
-              <FlatButton label='Already a PokeChat User?' containerElement={<Link to="/" />} linkButton={true}/>
+              <FlatButton label='Already a PokeChat User?' fullWidth={true} containerElement={<Link to="/" />} linkButton={true}/>
 					</div>
           <div id="pokemonWrapper">
             <button id='charmander' onClick={ () => { this.addPokemon('https://media.giphy.com/media/aa8oyloCKilLW/giphy.gif') }}></button>

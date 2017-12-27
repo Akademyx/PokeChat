@@ -88,10 +88,9 @@ class Login extends Component {
 			<div>
 				<div className="landingBox">
 				<br></br>
-        <br></br>
-        <br></br>
+				<h1>Pokechat</h1>
 					<div id="loginForm">
-					<TextField
+						<TextField
 							id="nameField"
 							hintText="Name"
 							hintStyle={fieldStyles.colorOrange}
@@ -102,14 +101,23 @@ class Login extends Component {
 							hintText="Password"
 							hintStyle={fieldStyles.colorDeepOrange}
 						/>
-						<FlatButton label="Login" fullWidth={true} onClick={ () => {
-							this.submitLoginCredentials(
+						{/* <div id='btn-wrapper-wrapper'> */}
+						<div className="btn-wrap">
+							<a className='landingButtons' onClick={ () => { this.submitLoginCredentials(
 								document.getElementById("nameField").value, 
 								document.getElementById("passwordField").value, 
 								this
-							)
-							}}/>
-						<FlatButton label='First Time? Sign Up!' containerElement={<Link to="/signup" />} linkButton={true}/>
+							) }}>Login</a>
+						</div>
+
+							<div id="btn-wrap">
+								<Link to='/signUp'>
+							{/* <Link to="/signup" id='link'>See The Form Demo</Link> */}
+  								<a className='landingButtons' type='button' linkButton={true}>Sign Up</a>
+								</Link>
+ 							</div>
+						{/* </div> */}
+						{/* <FlatButton label='First Time? Sign Up!' fullWidth={true} containerElement={<Link to="/signup" />} linkButton={true}/> */}
 						<Snackbar
             open={this.state.open}
             message="Please Enter A Correct Name and Password"
@@ -126,3 +134,15 @@ class Login extends Component {
 }
 
 export default Login;
+
+
+// <FlatButton label="Login" fullWidth={true} onClick={ () => {
+						// 	this.submitLoginCredentials(
+						// 		document.getElementById("nameField").value, 
+						// 		document.getElementById("passwordField").value, 
+						// 		this
+						// 	)
+							// }}/>
+
+
+							

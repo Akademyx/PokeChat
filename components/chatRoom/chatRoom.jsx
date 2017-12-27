@@ -39,13 +39,10 @@ class ChatRoom extends Component {
 		setInterval(this.checkForMessageUpdates, 100);
 		setTimeout(this.toggleSpeechBubble, 13000);	
 		let current_hour = new Date().getHours();
-		if (current_hour >= 5 && current_hour < 12) this.setState({greeting: 'Good morning, '});
-		else if (current_hour >= 12 && current_hour < 18) this.setState({greeting: 'Good afternoon, '});
-		else if (current_hour >= 18 && current_hour <= 22) this.setState({greeting: 'Good evening, '});
-		else {
-			this.setState({greeting: 'Up late, '});
-			this.setState({greetingPunctuation: '?'});
-		}
+		if (current_hour >= 5 && current_hour < 12) this.setState({greeting: 'Good morning, ', greetingPunctuation: '!'});
+		else if (current_hour >= 12 && current_hour < 18) this.setState({greeting: 'Good afternoon, ', greetingPunctuation: '!'});
+		else if (current_hour >= 18 && current_hour <= 22) this.setState({greeting: 'Good evening, ', greetingPunctuation: '!'});
+		else this.setState({greeting: 'Up late, ', greetingPunctuation: '?'});
 		// this.scrollToBottom();
 		window.scrollTo(0, document.body.scrollHeight);		
 	}
@@ -53,7 +50,7 @@ class ChatRoom extends Component {
 	addMessage (message, that) {
 		if (message === '') {
 			this.setState({greeting: 'Hey! Make sure you enter something, '});
-			this.setState({showSpeechBubble: 'block'});
+			this.setState({showSpeechBubble: 'block', greetingPunctuation: '.'});
 			setTimeout(this.toggleSpeechBubble, 13000);
 		}
 		else {
@@ -195,7 +192,7 @@ class ChatRoom extends Component {
 			textAlign: 'center',
 			borderBottom: '1px solid white',
 			backgroundColor: this.props.user.themeColor,
-			opacity: '0.9'
+			opacity: '0.99'
 		}
 		
 		let userPokemonButtonStyle = {

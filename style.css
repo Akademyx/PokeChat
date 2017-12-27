@@ -6,7 +6,13 @@ body {
     background-attachment: fixed;
     font-family: Tahoma, Geneva, sans-serif;
     cursor: pointer;    
+    -webkit-animation:300s scroll infinite linear;
+    -moz-animation:130s scroll infinite linear;
+    -o-animation:130s scroll infinite linear;
+    -ms-animation:130s scroll infinite linear;
+    animation:130s scroll infinite linear;
 }
+
 #loginWrapper {
     width: 300px;
     height: 300px;
@@ -16,4 +22,34 @@ body {
     margin-left: -150px;
     margin-top: -150px;
     text-align: center;
+}
+
+@-webkit-keyframes scroll{
+  100%{
+    background-position:3000px 0px;
+  }
+}
+
+@-moz-keyframes scroll{
+  100%{
+    background-position:3000px 0px;
+  }
+}
+
+@-o-keyframes scroll{
+  100%{
+    background-position:3000px 0px;
+  }
+}
+
+@-ms-keyframes scroll{
+  100%{
+    background-position:3000px 0px;
+  }
+}
+
+@keyframes scroll{
+  100%{
+    background-position:3000px 0px;
+  }
 }

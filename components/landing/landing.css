@@ -1,53 +1,64 @@
 .landingBox {
-	background-color: white;
+	background-color: rgb(104, 98, 98);
 	/* background-color:rgba(255, 255, 255, 0.5); */
 	/* background-image: url('https://static1.e926.net/data/8b/22/8b22c2b446f9f539693c305d7e599ef6.gif'); */
 	/* background-image: url('https://pre00.deviantart.net/bd05/th/pre/f/2015/070/9/1/pixel_wallpaper_by_horrorfangirl-d8lb5c6.png'); */
 	/* background-image:url('https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-310944.png'); */
 	/* background-image:url('https://i.imgur.com/NNoFNWf.png'); */
+	/* background:url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png); */
 	background-size: 100% 100%;
 	margin: auto;
 	position: relative;
 	width: 500px;
 	height: 500px;
-	border: 1px rgb(222, 211, 211) solid;
-	box-shadow: 10px 10px 30px 4px #d3ccc1;
+	border: 1px rgb(104, 98, 98) solid;
+	box-shadow: 1px 1px 1px 1px #6d6c69;
 	top: 70px;
 
-	/* -webkit-animation:20s scroll infinite linear;
-  -moz-animation:20s scroll infinite linear;
-  -o-animation:20s scroll infinite linear;
-  -ms-animation:20s scroll infinite linear;
-  animation:20s scroll infinite linear; */
+	-webkit-animation:100s scroll infinite linear;
+  -moz-animation:100s scroll infinite linear;
+  -o-animation:100s scroll infinite linear;
+  -ms-animation:100s scroll infinite linear;
+  animation:100s scroll infinite linear;
+}
+
+h1{
+  text-align:center;
+  color:#FFF !important;
+  margin-top:10%;
+  font:60px Lobster;
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
 }
 
 @-webkit-keyframes scroll{
   100%{
-    background-position:3000px 0px;
+    background-position:0px 3000px;
   }
 }
 
 @-moz-keyframes scroll{
   100%{
-    background-position:3000px 0px;
+    background-position:0px 3000px;
   }
 }
 
 @-o-keyframes scroll{
   100%{
-    background-position:3000px 0px;
+    background-position:0px 3000px;
   }
 }
 
 @-ms-keyframes scroll{
   100%{
-    background-position:3000px 0px;
+    background-position:0px 3000px;
   }
 }
 
 @keyframes scroll{
   100%{
-    background-position:3000px 0px;
+    background-position:0px 3000px;
   }
 }
 
@@ -207,3 +218,72 @@
 	from { background-position: 0 0; }
 	to { background-position: -400px 0; }
 } */
+
+
+
+.btn-wrap{
+  margin:0 auto;
+	/* width:200px; */
+	/* width: 100px; */
+	/* width: 100%; */
+	padding-top:50px;
+	margin-right: 40px;
+}
+
+#btn-wrap {
+	padding-top:50px;
+	margin-right: 40px;
+}
+/* 
+#btn-wrap-second {
+	margin:0 auto;
+	padding-top:50px;
+	margin-right: 40px;
+} */
+
+/* a{
+  background:#e74c3c;
+  color:#FFF;
+  position:relative;
+  padding:15px;
+  font-weight:900 !important;
+  text-transform:uppercase;
+  border-radius:5px;
+  font:14px lato;
+  opacity:0.8;
+  letter-spacing:1px;
+  text-decoration:none;
+	box-shadow:#c0392b 0px 7px 2px,#000 0px 8px 5px;
+}
+
+a:hover{
+  opacitY:1;
+}
+a:active{
+  top:4px;
+  box-shadow:#c0392b 0px 3px 2px,#000 0px 3px 5px;
+} */
+
+
+.landingButtons{
+  background:#e74c3c;
+  color:#FFF;
+  position:relative;
+  padding:15px;
+  font-weight:900 !important;
+  text-transform:uppercase;
+  border-radius:5px;
+  font:14px lato;
+  opacity:0.8;
+  letter-spacing:1px;
+  text-decoration:none;
+	box-shadow:#c0392b 0px 7px 2px,#000 0px 8px 5px;
+}
+
+.landingButtons:hover{
+  opacitY:1;
+}
+.landingButtons:active{
+  top:4px;
+  box-shadow:#c0392b 0px 3px 2px,#000 0px 3px 5px;
+}
