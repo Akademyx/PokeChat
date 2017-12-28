@@ -33,7 +33,10 @@ class userDrawer extends Component {
 
   handleLogout () {
     this.props.appContext.setState({user: {id: null, name: null, password: null, pokemon: null, themeColor: null, _v: 0, id: null}});
-    this.setState({redirectToLogin: true});    
+    this.setState({redirectToLogin: true});
+    // clearTimeout(this.props.chatRoomContext.setTimeoutID);  
+    // setState to end setTimeout recursion in checkForMessageUpdates in chatRoom 
+    this.props.chatRoomContext.setState({stopCheckForMessageUpdates: true});
   }
 
   render() {

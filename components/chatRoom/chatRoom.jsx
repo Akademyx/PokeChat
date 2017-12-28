@@ -47,7 +47,10 @@ class ChatRoom extends Component {
 			showSpeechBubble: 'show',
 			greeting: null,
 			greetingPunctuation: '!',
-			renderedAlready: false
+			renderedAlready: false,
+			// test
+			stopCheckForMessageUpdates: false
+			// test
 		}
 		this.getMessages = this.getMessages.bind(this);		
 		this.addMessage = this.addMessage.bind(this);
@@ -75,7 +78,8 @@ class ChatRoom extends Component {
 	componentWillUnmount () {
 		// clear setTimeout for checkForMessageUpdates
 		console.log('chat room unmounted');
-		clearTimeout(this.setTimeoutID);
+		console.log('setTimeoutID:', this.setTimeoutID);
+		// clearTimeout(this.setTimeoutID);
 	}
 
 	addMessage (message, that) {
@@ -94,7 +98,7 @@ class ChatRoom extends Component {
 			})
 			.then(function (response) {
 				console.log(response);
-				document.getElementById('messageField').value = null;				
+				document.getElementById('messageField').value = '';	
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -146,10 +150,15 @@ class ChatRoom extends Component {
 			//..before it is invoked again? 
 			// If instead we have a risk of a stack overflow, terminate and reinvoke this process..
 			//..(e.g. with state toggling)
-			that.setTimeoutID = setTimeout(
-				() => that.checkForMessageUpdates(),
-				100
-			);
+			// that.setTimeoutID = setTimeout(
+			// 	() => that.checkForMessageUpdates(),
+			// 	100
+			// );
+
+			// TEST
+			if (that.state.stopCheckForMessageUpdates === true) return
+			else that.setTimeoutID = setTimeout(that.checkForMessageUpdates, 100);
+			// TEST
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -267,10 +276,12 @@ class ChatRoom extends Component {
 					<button id='userOptionsButton' style={userPokemonButtonStyle}></button>
 					<div className='speech-bubble fadeOut' style={{display: this.state.showSpeechBubble}} onClick={ () => { this.toggleSpeechBubble() }}>{this.state.greeting}{this.props.user.name}{this.state.greetingPunctuation}</div>
 					<div id='userOptionsWrapper' style={this.state.userOptionsToggleShow}>
-						<UserOptions appContext={this.props.appContext} chatRoomContext={this} redirectToLogin={this.props.redirectToLogin} user={this.props.user}></UserOptions>
+						{/* redirect to Login no longer passed down: */}
+						{/* <UserOptions appContext={this.props.appContext} chatRoomContext={this} redirectToLogin={this.props.redirectToLogin} user={this.props.user}></UserOptions> */}
+						<UserOptions appContext={this.props.appContext} chatRoomContext={this} user={this.props.user}></UserOptions>
 					</div>
 					<div id='userDrawerWrapper'>
-						<UserDrawer appContext={this.props.appContext}user={this.props.user}></UserDrawer>
+						<UserDrawer appContext={this.props.appContext} chatRoomContext={this} user={this.props.user}></UserDrawer>
 					</div>
 				</header>
 				<div id='rightSideBar'>
