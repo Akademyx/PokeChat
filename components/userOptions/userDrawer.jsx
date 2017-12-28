@@ -41,10 +41,16 @@ class userDrawer extends Component {
     else { 
       return (
       <div>
-        <RaisedButton
+        {/* <RaisedButton
           label="My Settings"
           onClick={this.handleToggle}
-        />
+        /> */}
+        <div className="btn-wrap-options">
+							<a className='landingButtonsChatRoomOptions' 
+							onClick={ () => 
+								{ this.handleToggle() }}
+								>Options</a>
+					</div>
         <Drawer
           docked={false}
           width={220}

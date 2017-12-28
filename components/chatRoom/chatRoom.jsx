@@ -228,32 +228,46 @@ class ChatRoom extends Component {
 			borderBottom: '1px solid white',
 			backgroundColor: this.props.user.themeColor,
 			opacity: '0.99',
+			zIndex: 3
 		}
 		
 		let userPokemonButtonStyle = {
 			backgroundImage: 'url(' + this.props.user.pokemon + ')',
-			backgroundSize: '100px 100px',
+			backgroundSize: '80px 80px',
 			position: 'absolute',
 			top: '80px',
-			right: '20px',
-			height: '100px',
-			width: '100px',
-			borderRadius: '50%'
+			right: '4px',
+			height: '80px',
+			width: '80px',
+			borderRadius: '50%',
+			// display: 'inline-block',
 		}
 
   	return (
 			<div>
 				<header id='chatHeader' style={ headerStyle }>
 					<h5>{ 'POKE CHAT' }</h5>
-					<button id='userOptionsButton' style={userPokemonButtonStyle} onClick={ () => { this.toggleUserOptions() }}></button>
+					{/* <ul>
+						<li><a class="green" href="#">Cart <span class="number">0</span></a></li>
+						<li><a class="red" href="#">Cart <span class="number">1</span></a></li>
+					</ul> */}
+					<button id='userOptionsButton' style={userPokemonButtonStyle}></button>
 					<div className='speech-bubble fadeOut' style={{display: this.state.showSpeechBubble}} onClick={ () => { this.toggleSpeechBubble() }}>{this.state.greeting}{this.props.user.name}{this.state.greetingPunctuation}</div>
-				<div id='userOptionsWrapper' style={this.state.userOptionsToggleShow}>
-					<UserOptions appContext={this.props.appContext} chatRoomContext={this} redirectToLogin={this.props.redirectToLogin} user={this.props.user}></UserOptions>
-				</div>
-				<div id="userDrawerWrapper">
-					<UserDrawer appContext={this.props.appContext}user={this.props.user}></UserDrawer>
-				</div>
+					<div id='userOptionsWrapper' style={this.state.userOptionsToggleShow}>
+						<UserOptions appContext={this.props.appContext} chatRoomContext={this} redirectToLogin={this.props.redirectToLogin} user={this.props.user}></UserOptions>
+					</div>
+					<div id='userDrawerWrapper'>
+						<UserDrawer appContext={this.props.appContext}user={this.props.user}></UserDrawer>
+					</div>
 				</header>
+				<div id='rightSideBar'>
+						<div className="btn-wrap-sidebar">
+							<a className='landingButtonsChatRoomSidebar' 
+							onClick={ () => {
+							
+							}}>P</a>
+						</div>
+				</div>
 				<div id='messagesContainer'>{ displayMessages }</div>
 				<div id='chatFooter'>
 					<TextField
@@ -265,13 +279,20 @@ class ChatRoom extends Component {
 						onKeyDown={ () => {this.handleKeyPress()}}
 					/>
 					<div className="btn-wrap-send">
-							<a className='landingButtonsChatRoom' onClick={ () => {
+							<a className='landingButtonsChatRoom' 
+							onClick={ () => {
 							this.addMessage(
 								document.getElementById("messageField").value, 
 								this
 							)
 							}}>Send</a>
 						</div>
+					{/* <div className="btn-wrap-options">
+							<a className='landingButtonsChatRoomOptions' 
+							onClick={ () => 
+								{ this.toggleUserOptions() }}
+								>Options</a>
+					</div> */}
 					{/* <FlatButton 
 						label="Add Message" 
 						fullWidth={true} 

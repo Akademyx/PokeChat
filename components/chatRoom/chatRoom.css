@@ -5,12 +5,15 @@
 }
 
 h5 {
-	/* position: absolute; */
-	top: 0px;
+	position: absolute;
+	top: -30px;
+	margin-left: 15px;
 	text-align:center;
-  color:rgba(255, 255, 255, 0.851) !important;
+	color:rgba(255, 255, 255, 0.851) !important;
+	float: left;
+	font-size: 20px;
   /* margin-top:10%; */
-  font:30px Lobster;
+  /* font:30px Lobster; */
   /* text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
              0px 8px 13px rgba(0,0,0,0.1),
              0px 18px 23px rgba(0,0,0,0.1); */
@@ -155,11 +158,27 @@ h5 {
 }
 
 
-/* .landingButtonsChatRoom{
+.btn-wrap-options{
+	position: absolute;
+	margin:0 auto;
+	/* width:90px; */
+	/* width: 100px; */
+	/* width: 100%; */
+	padding-top:50px;
+	/* float: right; */
+	/* left: 60%; */
+	right: 0px;
+	bottom: 10px;
+	margin-left: 22px;
+	top:-40px;
+	/* margin-right: 40px; */
+}
+
+.landingButtonsChatRoomOptions{
   background:#e74c3c;
   color:#FFF;
   position:relative;
-  padding:15px;
+  padding:5px;
   font-weight:900 !important;
   text-transform:uppercase;
   border-radius:5px;
@@ -170,10 +189,121 @@ h5 {
 	box-shadow:#c0392b 0px 7px 2px,#000 0px 8px 5px;
 }
 
-.landingButtonsChatRoom:hover{
+.landingButtonsChatRoomOptions:hover{
   opacitY:1;
 }
-.landingButtonsChatRoom:active{
+.landingButtonsChatRoomOptions:active{
   top:4px;
   box-shadow:#c0392b 0px 3px 2px,#000 0px 3px 5px;
-} */
+}
+
+.btn-wrap-sidebar{
+	position: absolute;
+	margin:0 auto;
+	width:100px;
+	/* width: 100px; */
+	/* width: 100%; */
+	padding-top:50px;
+	/* padding-right: 50px; */
+	/* padding-left: 50px; */
+	/* float: right; */
+	top: 170px;
+	left: 27px;
+	/* bottom: 45px; */
+	/* margin-left: 22px; */
+	margin-right: 40px;
+}
+
+.landingButtonsChatRoomSidebar{
+  background:#e74c3c;
+  color:#FFF;
+  position:relative;
+	padding-top: 7.5px;
+	padding-bottom: 7.5px;
+	padding-right: 15px;
+	padding-left: 15px;
+  font-weight:900 !important;
+  text-transform:uppercase;
+  border-radius:50%;
+  font:14px lato;
+  opacity:0.8;
+  letter-spacing:1px;
+  text-decoration:none;
+	box-shadow:#c0392b 0px 7px 2px,#000 0px 8px 5px;
+}
+
+.landingButtonsChatRoomSidebar:hover{
+  opacitY:1;
+}
+.landingButtonsChatRoomSidebar:active{
+  top:4px;
+  box-shadow:#c0392b 0px 3px 2px,#000 0px 3px 5px;
+}
+
+
+/* header buttons */
+@mixin ease-this-bitch{
+  -webkit-transition:0.4s;
+  -moz-transition:0.4s;
+  -o-transition:0.4s;
+  -ms-transition:0.4s;
+  transition:0.4s;
+}
+
+ul{
+margin:0 auto;
+width:440px;
+  li{
+    float:left;
+    list-style:none;
+    a{
+      color:#FFF;
+      text-decoration:none;
+      font:900 12px Lato;
+      padding:8px 20px 8px 20px;
+      border:3px solid #999faf;
+      color:#999faf;
+      display:inline-block;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      margin-right:20px;
+      position:relative;
+      .number{
+        padding:3px 6px 4px 8px;
+        background:#999faf;
+        position:absolute;
+        border-radius:50px;
+        font:900 12px Lato;
+        color:#FFF;
+        top:-10px;
+        right:-13px;
+        border:3px solid #FFF;
+      }
+    }
+  }
+}
+
+.green:hover{
+  background:#03C9A9 !important;
+  color:#FFF;
+  border:3px solid #03C9A9;
+  @include ease-this-bitch;
+}
+
+.red:hover{
+  background:#F62459;
+  color:#FFF;
+  border:3px solid #F62459;
+  @include ease-this-bitch;
+}
+
+#rightSideBar {
+	/* float: right; */
+	right: 0px;
+	height: 100%;
+	width: 90px;
+	background-color: rgb(104, 98, 98);
+	position: fixed;
+	z-index: 2;
+	opacity: 0.9;
+}
