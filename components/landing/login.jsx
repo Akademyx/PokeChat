@@ -110,12 +110,10 @@ class Login extends Component {
 
 							<div className="btn-wrap">
 								<Link to='/signUp' style={{ textDecoration: 'none' }}>
-							{/* <Link to="/signup" id='link'>See The Form Demo</Link> */}
   								<a className='landingButtons' type='button' linkButton={true}>Sign Up</a>
 								</Link>
  							</div>
 						</div>
-						{/* <FlatButton label='First Time? Sign Up!' fullWidth={true} containerElement={<Link to="/signup" />} linkButton={true}/> */}
 						<Snackbar
             open={this.state.open}
             message="Please Enter A Correct Name and Password"
@@ -132,15 +130,6 @@ class Login extends Component {
 }
 
 export default Login;
-
-
-// <FlatButton label="Login" fullWidth={true} onClick={ () => {
-						// 	this.submitLoginCredentials(
-						// 		document.getElementById("nameField").value, 
-						// 		document.getElementById("passwordField").value, 
-						// 		this
-						// 	)
-							// }}/>
 
 
 							

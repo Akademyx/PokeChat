@@ -36,6 +36,8 @@ h5 {
   transform: scale(1.1);
 } */
 
+
+/* main pieces */
 #messagesContainer {
 	position: relative;
 	top: 100px;
@@ -46,7 +48,6 @@ h5 {
 	margin-top: auto;
 	width: 700px;
 }
-
 #chatFooter {
 	position: fixed;
 	z-index: 1;
@@ -56,17 +57,27 @@ h5 {
 	margin: auto;
 	text-align: center;
 }
+#rightSideBar {
+	right: 0px;
+	height: 100%;
+	width: 90px;
+	background-color: rgb(104, 98, 98);
+	position: fixed;
+	z-index: 2;
+	opacity: 0.9;
+}
+
 
 #userDrawerWrapper {
 	position: absolute;	
 	top: 10px;
 	right: 20px;
 }
-
 #logoutWrapper {
 	margin: 0;
 }
 
+/* speech bubble */
 .speech-bubble {
 	background-color: #f8f8f8;
 	border: 1px solid #c8c8c8;
@@ -81,18 +92,15 @@ h5 {
 	-webkit-animation-duration: 15s;animation-duration: 15s;
 	-webkit-animation-fill-mode: both;animation-fill-mode: both;
 }
-
 .speech-bubble .arrow {
 	border-style: solid;
 	position: absolute;
 }
-
 .bottom {
 	border-color: #c8c8c8 transparent transparent transparent;
 	border-width: 8px 8px 0px 8px;
 	bottom: -8px;
 }
-
 .bottom:after {
 	border-color: #f8f8f8 transparent transparent transparent;
 	border-style: solid;
@@ -118,22 +126,16 @@ h5 {
 	animation-name: fadeOut;
 }
 
-/* styling buttons */
-
+/* buttons and their wrappers */
 .btn-wrap-send{
 	position: absolute;
 	margin:0 auto;
 	width:100px;
-	/* width: 100px; */
-	/* width: 100%; */
 	padding-top:50px;
-	/* float: right; */
 	left: 60%;
 	bottom: 45px;
 	margin-left: 22px;
-	/* margin-right: 40px; */
 }
-
 .landingButtonsChatRoom{
   background:#e74c3c;
   color:#FFF;
@@ -148,7 +150,6 @@ h5 {
   text-decoration:none;
 	box-shadow:#c0392b 0px 7px 2px,#000 0px 8px 5px;
 }
-
 .landingButtonsChatRoom:hover{
   opacitY:1;
 }
@@ -157,23 +158,15 @@ h5 {
   box-shadow:#c0392b 0px 3px 2px,#000 0px 3px 5px;
 }
 
-
 .btn-wrap-options{
 	position: absolute;
 	margin:0 auto;
-	/* width:90px; */
-	/* width: 100px; */
-	/* width: 100%; */
 	padding-top:50px;
-	/* float: right; */
-	/* left: 60%; */
 	right: 0px;
 	bottom: 10px;
 	margin-left: 22px;
 	top:-40px;
-	/* margin-right: 40px; */
 }
-
 .landingButtonsChatRoomOptions{
   background:#e74c3c;
   color:#FFF;
@@ -188,7 +181,6 @@ h5 {
   text-decoration:none;
 	box-shadow:#c0392b 0px 7px 2px,#000 0px 8px 5px;
 }
-
 .landingButtonsChatRoomOptions:hover{
   opacitY:1;
 }
@@ -201,19 +193,11 @@ h5 {
 	position: absolute;
 	margin:0 auto;
 	width:100px;
-	/* width: 100px; */
-	/* width: 100%; */
 	padding-top:50px;
-	/* padding-right: 50px; */
-	/* padding-left: 50px; */
-	/* float: right; */
 	top: 160px;
 	left: 27px;
-	/* bottom: 45px; */
-	/* margin-left: 22px; */
 	margin-right: 40px;
 }
-
 .landingButtonsChatRoomSidebar{
   background:#e74c3c;
   color:#FFF;
@@ -231,7 +215,6 @@ h5 {
   text-decoration:none;
 	box-shadow:#c0392b 0px 7px 2px,#000 0px 8px 5px;
 }
-
 .landingButtonsChatRoomSidebar:hover{
   opacitY:1;
 }
@@ -240,70 +223,3 @@ h5 {
   box-shadow:#c0392b 0px 3px 2px,#000 0px 3px 5px;
 }
 
-
-/* header buttons */
-@mixin ease-this-bitch{
-  -webkit-transition:0.4s;
-  -moz-transition:0.4s;
-  -o-transition:0.4s;
-  -ms-transition:0.4s;
-  transition:0.4s;
-}
-
-ul{
-margin:0 auto;
-width:440px;
-  li{
-    float:left;
-    list-style:none;
-    a{
-      color:#FFF;
-      text-decoration:none;
-      font:900 12px Lato;
-      padding:8px 20px 8px 20px;
-      border:3px solid #999faf;
-      color:#999faf;
-      display:inline-block;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      margin-right:20px;
-      position:relative;
-      .number{
-        padding:3px 6px 4px 8px;
-        background:#999faf;
-        position:absolute;
-        border-radius:50px;
-        font:900 12px Lato;
-        color:#FFF;
-        top:-10px;
-        right:-13px;
-        border:3px solid #FFF;
-      }
-    }
-  }
-}
-
-.green:hover{
-  background:#03C9A9 !important;
-  color:#FFF;
-  border:3px solid #03C9A9;
-  @include ease-this-bitch;
-}
-
-.red:hover{
-  background:#F62459;
-  color:#FFF;
-  border:3px solid #F62459;
-  @include ease-this-bitch;
-}
-
-#rightSideBar {
-	/* float: right; */
-	right: 0px;
-	height: 100%;
-	width: 90px;
-	background-color: rgb(104, 98, 98);
-	position: fixed;
-	z-index: 2;
-	opacity: 0.9;
-}

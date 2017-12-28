@@ -41,10 +41,6 @@ class userDrawer extends Component {
     else { 
       return (
       <div>
-        {/* <RaisedButton
-          label="My Settings"
-          onClick={this.handleToggle}
-        /> */}
         <div className="btn-wrap-options">
 							<a className='landingButtonsChatRoomOptions' 
 							onClick={ () => 

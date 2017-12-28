@@ -48,7 +48,6 @@ class ChatRoom extends Component {
 			greeting: null,
 			greetingPunctuation: '!',
 			renderedAlready: false
-			// rerouteToLogin: false
 		}
 		this.getMessages = this.getMessages.bind(this);		
 		this.addMessage = this.addMessage.bind(this);
@@ -57,27 +56,26 @@ class ChatRoom extends Component {
 		this.toggleSpeechBubble = this.toggleSpeechBubble.bind(this);
 		this.scrollToBottom = this.scrollToBottom.bind(this);
 		this.handleKeyPress = this.handleKeyPress.bind(this);
-		// this.checkInterval = this.checkInterval.bind(this);
 	}
 
 	componentDidMount () {
+		// get messages in db on mount
 		this.getMessages(this);
+		// show pokemon greeting
 		setTimeout(this.toggleSpeechBubble, 13000);	
 		let current_hour = new Date().getHours();
 		if (current_hour >= 5 && current_hour < 12) this.setState({greeting: 'Good morning, ', greetingPunctuation: '!'});
 		else if (current_hour >= 12 && current_hour < 18) this.setState({greeting: 'Good afternoon, ', greetingPunctuation: '!'});
 		else if (current_hour >= 18 && current_hour <= 22) this.setState({greeting: 'Good evening, ', greetingPunctuation: '!'});
 		else this.setState({greeting: 'Up late, ', greetingPunctuation: '?'});
-		this.checkInterval = setInterval(
-      () => this.checkForMessageUpdates(),
-      100
-		);
-		// window.scrollTo(0, document.body.scrollHeight);	
+		// invoke to begin recursive setTimeout (see method) calls for checking messages
+		this.checkForMessageUpdates();
 	}
 
 	componentWillUnmount () {
-		// clear setInterval for checkForMessageUpdates
-		clearInterval(this.checkInterval);
+		// clear setTimeout for checkForMessageUpdates
+		console.log('chat room unmounted');
+		clearTimeout(this.setTimeoutID);
 	}
 
 	addMessage (message, that) {
@@ -125,7 +123,7 @@ class ChatRoom extends Component {
 			// scroll to bottom only on first render of messages 
 			// ..(prevents annoying scroll downs on further renders)
 			if (that.state.renderedAlready === false) {
-				// may fire before setState has completed 
+				// may fire before setState has completed? 
 				window.scrollTo(0, document.body.scrollHeight);
 				that.setState({renderedAlready: true});
 			}
@@ -142,6 +140,16 @@ class ChatRoom extends Component {
 		.then(function (response) {
 			console.log(response.data);
 			if(response.data.length > that.state.renderedMessageCount) that.getMessages(that);
+			// recursively call this method and set a var for Id-ing this process for termination 
+			//..in componentWillUnmount
+			// Note: Does the setTimeout resolve any call stack overflow issues because the function finishes..
+			//..before it is invoked again? 
+			// If instead we have a risk of a stack overflow, terminate and reinvoke this process..
+			//..(e.g. with state toggling)
+			that.setTimeoutID = setTimeout(
+				() => that.checkForMessageUpdates(),
+				100
+			);
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -256,10 +264,6 @@ class ChatRoom extends Component {
 			<div>
 				<header id='chatHeader' style={ headerStyle }>
 					<h5>{ 'POKE CHAT' }</h5>
-					{/* <ul>
-						<li><a class="green" href="#">Cart <span class="number">0</span></a></li>
-						<li><a class="red" href="#">Cart <span class="number">1</span></a></li>
-					</ul> */}
 					<button id='userOptionsButton' style={userPokemonButtonStyle}></button>
 					<div className='speech-bubble fadeOut' style={{display: this.state.showSpeechBubble}} onClick={ () => { this.toggleSpeechBubble() }}>{this.state.greeting}{this.props.user.name}{this.state.greetingPunctuation}</div>
 					<div id='userOptionsWrapper' style={this.state.userOptionsToggleShow}>

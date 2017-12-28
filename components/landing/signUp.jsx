@@ -49,7 +49,9 @@ class SignUp extends Component {
         document.getElementById("passwordField").value = ''
         // if response data is an empty string this means the user isnt found in the database. 
         // if is empty, alert the user of incorrect credentials
-        if (response.data === '') alert ('incorrect password or username');
+        //// REPLACE with material-ui candybar ////
+        if (response.data === '') alert ('please enter a password and username');
+        ///////////////////////////////////////////
         else {
           let appState = that.props.appContext;	
 					// pass user to app (parent) state				
@@ -73,7 +75,7 @@ class SignUp extends Component {
   }
 	
 	render() {
-		// if login credentials come back true, redirect to chatroom:
+		// if sign up is successful, redirect to chatroom:
     if (this.state.redirectToChatRoom === true) return (<Redirect to='/chatroom'/>);
 		// otherwise render login page
 		else {
@@ -105,7 +107,6 @@ class SignUp extends Component {
 					</div>
           <div id="pokemonWrapper">
             <button id='charmander' onClick={ () => { this.addPokemon('https://media.giphy.com/media/aa8oyloCKilLW/giphy.gif') }}></button>
-            {/* <button id='charmander' onClick={ () => { this.addPokemon('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909') }}></button> */}
             <button id='squirtle' onClick={ () => { this.addPokemon('https://seeklogo.com/images/S/squirtle-logo-0E4AE193EE-seeklogo.com.png') }}></button>
             <button id='raichu' onClick={ () => { this.addPokemon('http://vignette3.wikia.nocookie.net/roblox-pokemon-project/images/3/33/Raichu-wallpaper.png/revision/latest?cb=20161110022821') }}></button>
             <button id='bulbasaur' onClick={ () => { this.addPokemon('https://vignette.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758') }}></button>
