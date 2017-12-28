@@ -47,6 +47,7 @@ class ChatRoom extends Component {
 			showSpeechBubble: 'show',
 			greeting: null,
 			greetingPunctuation: '!',
+			renderedAlready: false
 			// rerouteToLogin: false
 		}
 		this.getMessages = this.getMessages.bind(this);		
@@ -95,7 +96,7 @@ class ChatRoom extends Component {
 			})
 			.then(function (response) {
 				console.log(response);
-				document.getElementById('messageField').value = '';				
+				document.getElementById('messageField').value = null;				
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -120,8 +121,14 @@ class ChatRoom extends Component {
 			}
 			that.setState({messages: allMessages});
 			that.setState({renderedMessageCount: response.data.length});
-			// may fire before setState has completed 
-			window.scrollTo(0, document.body.scrollHeight);
+			
+			// scroll to bottom only on first render of messages 
+			// ..(prevents annoying scroll downs on further renders)
+			if (that.state.renderedAlready === false) {
+				// may fire before setState has completed 
+				window.scrollTo(0, document.body.scrollHeight);
+				that.setState({renderedAlready: true});
+			}
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -162,7 +169,7 @@ class ChatRoom extends Component {
 				let styles = {
 					backgroundColor: this.state.messages[i].themeColor,
 					minWidth: '30px',
-					maxWidth: '60%',
+					maxWidth: '80%',
 					overflowWrap: 'break-word',
 					display: 'inline-block',
 					borderRadius: '15px',
@@ -170,6 +177,7 @@ class ChatRoom extends Component {
 					marginRight: '10px',
 					marginTop: '7px',
 					marginBottom: '7px',
+					fontSize: '18px'
 					// float: 'right'
 				}
 				let spanStyle = {
@@ -193,7 +201,7 @@ class ChatRoom extends Component {
 				let messageStyles = {
 					backgroundColor: this.state.messages[i].themeColor,
 					minWidth: '30px',
-					maxWidth: '60%',
+					maxWidth: '80%',
 					overflowWrap: 'break-word',
 					display: 'inline-block',
 					borderRadius: '15px',
@@ -201,6 +209,7 @@ class ChatRoom extends Component {
 					marginRight: '10px',
 					marginTop: '7px',
 					marginBottom: '7px',
+					fontSize: '18px'
 				}
 
 				let nameStyles = {
