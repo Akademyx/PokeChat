@@ -8,7 +8,6 @@ import {orange500, deepOrange500 } from 'material-ui/styles/colors';
 import styles from './userTheme.css';
 import axios from 'axios';
 
-// undocked drawer
 class userTheme extends Component {
 
   constructor(props) {
@@ -16,16 +15,9 @@ class userTheme extends Component {
     this.state = {
       open: false,
     };
-    this.handleClick = this.handleClick.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.updateUserTheme = this.updateUserTheme.bind(this);
   }
-
-  handleClick () {
-    this.setState({
-      open: true,
-    });
-  };
 
   handleRequestClose () {
     this.setState({
@@ -43,6 +35,7 @@ class userTheme extends Component {
       console.log(response);
       // set state of app level user to response.data object
       that.props.appContext.setState({user: response.data});
+      that.setState({open: true});
     })
     .catch(function (error) {
       console.log(error);
@@ -63,10 +56,6 @@ class userTheme extends Component {
             <button id='purple' onClick={ () => { this.updateUserTheme('rgb(148, 81, 148)', this) }}></button>
             <button id='orange' onClick={ () => { this.updateUserTheme('rgb(240, 184, 87)', this) }}></button>
           </div>
-          {/* <FlatButton
-            onClick={this.handleClick}
-            label="Select Theme"
-          /> */}
           <Snackbar
             open={this.state.open}
             message="New Theme Selected"

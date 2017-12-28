@@ -10,7 +10,6 @@ import UserPokemon from './userPokemon/userPokemon.jsx';
 import UserTheme from './userTheme/userTheme.jsx';
 import axios from 'axios';
 
-// undocked 
 class userDrawer extends Component {
 
   constructor(props, context) {

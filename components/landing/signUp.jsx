@@ -9,6 +9,7 @@ import FlatButton from 'material-ui/FlatButton';
 import {orange500, deepOrange500 } from 'material-ui/styles/colors';
 import axios from 'axios';
 
+// material-ui styles
 const fieldStyles = {
 	colorOrange: {
 		color: orange500,

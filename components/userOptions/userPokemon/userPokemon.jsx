@@ -8,7 +8,6 @@ import {orange500, deepOrange500 } from 'material-ui/styles/colors';
 import styles from './userPokemon.css';
 import axios from 'axios';
 
-// undocked 
 class userPokemon extends Component {
 
   constructor(props) {
@@ -16,16 +15,9 @@ class userPokemon extends Component {
     this.state = {
       open: false,
     };
-    this.handleClick = this.handleClick.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.updateUserPokemon = this.updateUserPokemon.bind(this);
   }
-
-  handleClick () {
-    this.setState({
-      open: true,
-    });
-  };
 
   handleRequestClose () {
     this.setState({
@@ -43,6 +35,7 @@ class userPokemon extends Component {
       console.log('RESPONSE IN UPDATE USER POKEMON', response);
       // set state of app level user to response.data object
       that.props.appContext.setState({user: response.data});
+      that.setState({open: true});
     })
     .catch(function (error) {
       console.log(error);
@@ -63,10 +56,6 @@ class userPokemon extends Component {
             <button id='bulbasaur' onClick={ () => { this.updateUserPokemon('bulbasaur', this) }}></button>
             <button id='onyx' onClick={ () => { this.updateUserPokemon('onyx', this) }}></button>
           </div>
-          {/* <FlatButton
-            onClick={this.handleClick}
-            label="Choose Pokemon"
-          /> */}
           <Snackbar
             open={this.state.open}
             message="New Pokemon Chosen"

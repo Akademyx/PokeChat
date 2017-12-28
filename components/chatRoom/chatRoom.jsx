@@ -37,27 +37,22 @@ class ChatRoom extends Component {
 
 	componentDidMount () {
 		this.getMessages(this);
-		
 		setTimeout(this.toggleSpeechBubble, 13000);	
 		let current_hour = new Date().getHours();
 		if (current_hour >= 5 && current_hour < 12) this.setState({greeting: 'Good morning, ', greetingPunctuation: '!'});
 		else if (current_hour >= 12 && current_hour < 18) this.setState({greeting: 'Good afternoon, ', greetingPunctuation: '!'});
 		else if (current_hour >= 18 && current_hour <= 22) this.setState({greeting: 'Good evening, ', greetingPunctuation: '!'});
 		else this.setState({greeting: 'Up late, ', greetingPunctuation: '?'});
-		// this.scrollToBottom();
-		window.scrollTo(0, document.body.scrollHeight);	
-		// checkInterval = setInterval(this.checkForMessageUpdates, 100);
 		this.checkInterval = setInterval(
       () => this.checkForMessageUpdates(),
       100
-    );
-		// checkInterval();	
+		);
+		// window.scrollTo(0, document.body.scrollHeight);	
 	}
 
 	componentWillUnmount () {
-		console.log('chatroom unmounted');
+		// clear setInterval for checkForMessageUpdates
 		clearInterval(this.checkInterval);
-		// window.refreshcheckInterval;
 	}
 
 	addMessage (message, that) {
@@ -129,10 +124,6 @@ class ChatRoom extends Component {
 	}
 
 	render() {
-		//TEST
-		// if(this.state.rerouteToLogin == true) return (<Redirect to='/'/>) 
-		//TEST
-	  // else {
 		let displayMessages = [];
 		for (let i = 0; i < this.state.messages.length; i++) {
 			// if messages user name equals state user's name
@@ -248,7 +239,6 @@ class ChatRoom extends Component {
 				{/* <div ref={el => { this.el = el; }}></div> */}
 			</div>
     	)
-		// }
 	}
 }
 

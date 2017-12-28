@@ -10,7 +10,7 @@ import Snackbar from 'material-ui/Snackbar';
 import {orange500, deepOrange500 } from 'material-ui/styles/colors';
 import axios from 'axios';
 
-// material ui styles
+// material-ui styles
 const fieldStyles = {
 	colorOrange: {
 		color: orange500,
@@ -49,9 +49,7 @@ class Login extends Component {
 				document.getElementById("passwordField").value = ''
 				// if response data is an empty string this means the user isnt found in the database. 
 				// if is empty, alert the user of incorrect credentials
-
 				if (response.data === '') that.handleClick();
-
 				else {
 					// re-render and route to chatroom with react router
 					let appState = that.props.appContext;	
