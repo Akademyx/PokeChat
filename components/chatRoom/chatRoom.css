@@ -114,3 +114,66 @@ h5 {
 	-webkit-animation-name: fadeOut;
 	animation-name: fadeOut;
 }
+
+/* styling buttons */
+
+.btn-wrap-send{
+	position: absolute;
+	margin:0 auto;
+	width:100px;
+	/* width: 100px; */
+	/* width: 100%; */
+	padding-top:50px;
+	/* float: right; */
+	left: 60%;
+	bottom: 45px;
+	margin-left: 22px;
+	/* margin-right: 40px; */
+}
+
+.landingButtonsChatRoom{
+  background:#e74c3c;
+  color:#FFF;
+  position:relative;
+  padding:5px;
+  font-weight:900 !important;
+  text-transform:uppercase;
+  border-radius:5px;
+  font:14px lato;
+  opacity:0.8;
+  letter-spacing:1px;
+  text-decoration:none;
+	box-shadow:#c0392b 0px 7px 2px,#000 0px 8px 5px;
+}
+
+.landingButtonsChatRoom:hover{
+  opacitY:1;
+}
+.landingButtonsChatRoom:active{
+  top:4px;
+  box-shadow:#c0392b 0px 3px 2px,#000 0px 3px 5px;
+}
+
+
+/* .landingButtonsChatRoom{
+  background:#e74c3c;
+  color:#FFF;
+  position:relative;
+  padding:15px;
+  font-weight:900 !important;
+  text-transform:uppercase;
+  border-radius:5px;
+  font:14px lato;
+  opacity:0.8;
+  letter-spacing:1px;
+  text-decoration:none;
+	box-shadow:#c0392b 0px 7px 2px,#000 0px 8px 5px;
+}
+
+.landingButtonsChatRoom:hover{
+  opacitY:1;
+}
+.landingButtonsChatRoom:active{
+  top:4px;
+  box-shadow:#c0392b 0px 3px 2px,#000 0px 3px 5px;
+} */

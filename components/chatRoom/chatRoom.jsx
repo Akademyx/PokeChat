@@ -7,9 +7,32 @@ import styles from './chatRoom.css';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/TextField';
 import Drawer from 'material-ui/Drawer';
+import {orange500, deepOrange500, red300, red400, red800 } from 'material-ui/styles/colors';
 import axios from 'axios';
 import UserOptions from './../userOptions/userOptions.jsx';
 import UserDrawer from './../userOptions/userDrawer.jsx';
+
+// material-ui styles
+const fieldStyles = {
+	colorOrange: {
+		color: orange500,
+	},
+	colorDeepOrange: {
+		color: deepOrange500,
+	},
+	colorRed: {
+		color: red400
+	},
+	colorLightRed: {
+		color: red300
+	},
+	colorDeepRed: {
+		color: red800
+	},
+	underlineStyle: {
+    borderColor: red300,
+  },
+}
 
 class ChatRoom extends Component {
   constructor(props, context) {
@@ -32,6 +55,7 @@ class ChatRoom extends Component {
 		this.toggleUserOptions = this.toggleUserOptions.bind(this);
 		this.toggleSpeechBubble = this.toggleSpeechBubble.bind(this);
 		this.scrollToBottom = this.scrollToBottom.bind(this);
+		this.handleKeyPress = this.handleKeyPress.bind(this);
 		// this.checkInterval = this.checkInterval.bind(this);
 	}
 
@@ -79,6 +103,12 @@ class ChatRoom extends Component {
 		}
 	}
 
+	handleKeyPress (event, message) {
+		if(event.key == 'Enter'){
+			addMessage('hello', this)
+		}
+	}
+
 	getMessages (that) {
 		axios.get('/getMessages', {
 		})
@@ -90,7 +120,8 @@ class ChatRoom extends Component {
 			}
 			that.setState({messages: allMessages});
 			that.setState({renderedMessageCount: response.data.length});
-			// window.scrollTo(0, document.body.scrollHeight);
+			// may fire before setState has completed 
+			window.scrollTo(0, document.body.scrollHeight);
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -228,13 +259,28 @@ class ChatRoom extends Component {
 					<TextField
 						id="messageField"
 						hintText="message"
+						type="text"
+						hintStyle={fieldStyles.colorLightRed}
+						underlineStyle={fieldStyles.underlineStyle}
+						onKeyDown={ () => {this.handleKeyPress()}}
 					/>
-					<FlatButton label="Add Message" fullWidth={true} onClick={ () => {
-						this.addMessage(
-							document.getElementById("messageField").value, 
-							this
-						)
-					}}/>
+					<div className="btn-wrap-send">
+							<a className='landingButtonsChatRoom' onClick={ () => {
+							this.addMessage(
+								document.getElementById("messageField").value, 
+								this
+							)
+							}}>Send</a>
+						</div>
+					{/* <FlatButton 
+						label="Add Message" 
+						fullWidth={true} 
+						onClick={ () => {
+							this.addMessage(
+								document.getElementById("messageField").value, 
+								this
+							)
+					}}/> */}
 				</div>
 				{/* <div ref={el => { this.el = el; }}></div> */}
 			</div>
