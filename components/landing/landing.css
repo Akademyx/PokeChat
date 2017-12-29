@@ -82,8 +82,8 @@ h1{
 #charmander {
 	/* background-image: url('https://vignette.wikia.nocookie.net/pokemon/images/4/41/004Charmander_OS_anime_2.png/revision/latest?cb=20140603214909'); */
 	background-image: url('https://media.giphy.com/media/aa8oyloCKilLW/giphy.gif');
-	/* background-position: 30% 10%; */
-	background-size: 100px 100px;
+	background-position: 40% 80%;
+	background-size: 130px 130px;
 	height: 100px;
 	width: 100px;
 	border-radius: 50%;
@@ -93,16 +93,16 @@ h1{
 #squirtle {
 	/* background-image: url('https://seeklogo.com/images/S/squirtle-logo-0E4AE193EE-seeklogo.com.png'); */
 	background-image: url('https://vignette.wikia.nocookie.net/project-pokemon/images/8/85/Squritle.gif/revision/latest?cb=20160721141840');
-	/* background-position: 30% 50%; */
-	background-size: 100px 100px;
+	background-position: 40% 80%;
+	background-size: 130px 130px;
 	height: 100px;
 	width: 100px;
 	border-radius: 50%;
 	display: inline-block;
 } 
 
-#raichu {
-	background-image: url('http://vignette3.wikia.nocookie.net/roblox-pokemon-project/images/3/33/Raichu-wallpaper.png/revision/latest?cb=20161110022821');
+#pikachu {
+	background-image: url('https://i.pinimg.com/originals/65/95/7d/65957d802d9046d0d8d9e13ceb3e8e6d.gif');
 	/* background-position: 30% 50%; */
 	background-size: 100px 100px;
 	height: 100px;
@@ -112,7 +112,7 @@ h1{
 } 
 
 #bulbasaur {
-	background-image: url('https://vignette.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758');
+	background-image: url('http://pa1.narvii.com/5707/3ab7eaf896208ff835c71ec323627db336ba222b_00.gif');
 	/* background-position: 30% 50%; */
 	background-size: 100px 100px;
 	height: 100px;
@@ -121,8 +121,8 @@ h1{
 	display: inline-block;
 } 
 
-#onyx {
-	background-image: url('https://pre00.deviantart.net/959a/th/pre/f/2016/075/4/6/095_onix_by_rayo123000-d9vbjj3.png');
+#jigglypuff {
+	background-image: url('https://media.giphy.com/media/fYYVe1rP4oaHe/giphy.gif');
 	/* background-position: 30% 50%; */
 	background-size: 100px 100px;
 	height: 100px;

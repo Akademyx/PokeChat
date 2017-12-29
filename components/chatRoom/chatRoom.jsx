@@ -47,10 +47,10 @@ class ChatRoom extends Component {
 			showSpeechBubble: 'show',
 			greeting: null,
 			greetingPunctuation: '!',
+			greetingEmoji: null,
+			greetingEmojiSize: null,
 			renderedAlready: false,
-			// test
 			stopCheckForMessageUpdates: false
-			// test
 		}
 		this.getMessages = this.getMessages.bind(this);		
 		this.addMessage = this.addMessage.bind(this);
@@ -65,12 +65,41 @@ class ChatRoom extends Component {
 		// get messages in db on mount
 		this.getMessages(this);
 		// show pokemon greeting
-		setTimeout(this.toggleSpeechBubble, 13000);	
+		setTimeout(this.toggleSpeechBubble, 13000);
+
 		let current_hour = new Date().getHours();
-		if (current_hour >= 5 && current_hour < 12) this.setState({greeting: 'Good morning, ', greetingPunctuation: '!'});
-		else if (current_hour >= 12 && current_hour < 18) this.setState({greeting: 'Good afternoon, ', greetingPunctuation: '!'});
-		else if (current_hour >= 18 && current_hour <= 22) this.setState({greeting: 'Good evening, ', greetingPunctuation: '!'});
-		else this.setState({greeting: 'Up late, ', greetingPunctuation: '?'});
+		if (current_hour >= 5 && current_hour < 12) {
+			this.setState({
+				greeting: 'Good morning, ', 
+				greetingPunctuation: '!',
+				greetingEmoji: '',
+				greetingEmojiSize: '10px'
+			});
+		}
+		else if (current_hour >= 12 && current_hour < 18) {
+			this.setState({
+				greeting: 'Good afternoon, ', 
+				greetingPunctuation: '!',
+				greetingEmoji: '',
+				greetingEmojiSize: '10px'
+			});
+		}
+		else if (current_hour >= 18 && current_hour <= 22) {
+			this.setState({
+				greeting: 'Good evening, ', 
+				greetingPunctuation: '!', 
+				greetingEmoji: 'https://data.whicdn.com/images/196884069/superthumb.png',
+				greetingEmojiSize: '10px'
+			});
+		}
+		else {
+			this.setState({
+				greeting: 'Up late, ', 
+				greetingPunctuation: '?',
+				greetingEmoji: '',
+				greetingEmojiSize: '10px'
+			});
+		}
 		// invoke to begin recursive setTimeout (see method) calls for checking messages
 		this.checkForMessageUpdates();
 	}
@@ -155,10 +184,13 @@ class ChatRoom extends Component {
 			// 	100
 			// );
 
-			// TEST
+			// exit function on setState trigger from child (userDrawer) handleLogout method
+			// ..clearTimeout in componentWillUnmount will not work most of the time, otherwise..
+			// ..(at least in Chrome). Seems to be a common issue online.
+			// Another possible solution here: https://stackoverflow.com/questions/29526739/stopping-a-timeout-in-reactjs
+			// Another possible soluton: clearTimeout/clearInterval alternatives (I think I saw one that referenced the browser window)
 			if (that.state.stopCheckForMessageUpdates === true) return
 			else that.setTimeoutID = setTimeout(that.checkForMessageUpdates, 100);
-			// TEST
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -194,7 +226,7 @@ class ChatRoom extends Component {
 					marginRight: '10px',
 					marginTop: '7px',
 					marginBottom: '7px',
-					fontSize: '18px'
+					fontSize: '18px',
 					// float: 'right'
 				}
 				let spanStyle = {
@@ -259,7 +291,9 @@ class ChatRoom extends Component {
 		
 		let userPokemonButtonStyle = {
 			backgroundImage: 'url(' + this.props.user.pokemon + ')',
-			backgroundSize: '80px 80px',
+			// backgroundSize: '80px 80px',
+			backgroundPosition: '40% 80%',
+			backgroundSize: '100px 100px',
 			position: 'absolute',
 			top: '80px',
 			right: '4px',

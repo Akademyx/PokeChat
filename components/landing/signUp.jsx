@@ -108,9 +108,9 @@ class SignUp extends Component {
           <div id="pokemonWrapper">
             <button id='charmander' onClick={ () => { this.addPokemon('https://media.giphy.com/media/aa8oyloCKilLW/giphy.gif') }}></button>
             <button id='squirtle' onClick={ () => { this.addPokemon('https://seeklogo.com/images/S/squirtle-logo-0E4AE193EE-seeklogo.com.png') }}></button>
-            <button id='raichu' onClick={ () => { this.addPokemon('http://vignette3.wikia.nocookie.net/roblox-pokemon-project/images/3/33/Raichu-wallpaper.png/revision/latest?cb=20161110022821') }}></button>
-            <button id='bulbasaur' onClick={ () => { this.addPokemon('https://vignette.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758') }}></button>
-            <button id='onyx' onClick={ () => { this.addPokemon('https://pre00.deviantart.net/959a/th/pre/f/2016/075/4/6/095_onix_by_rayo123000-d9vbjj3.png') }}></button>
+            <button id='pikachu' onClick={ () => { this.addPokemon('https://i.pinimg.com/originals/65/95/7d/65957d802d9046d0d8d9e13ceb3e8e6d.gif') }}></button>
+            <button id='bulbasaur' onClick={ () => { this.addPokemon('http://pa1.narvii.com/5707/3ab7eaf896208ff835c71ec323627db336ba222b_00.gif') }}></button>
+            <button id='jigglypuff' onClick={ () => { this.addPokemon('https://media.giphy.com/media/fYYVe1rP4oaHe/giphy.gif') }}></button>
           </div>
           <br></br>
           <div id="colorWrapper">

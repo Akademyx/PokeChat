@@ -51,10 +51,10 @@ class userPokemon extends Component {
           <h4 id="choosePokemonHeader">{'Choose a Different Pokemon'}</h4>
           <div id="pokemonWrapperUserDrawer">
             <button id='charmander' onClick={ () => { this.updateUserPokemon('https://media.giphy.com/media/aa8oyloCKilLW/giphy.gif', this) }}></button>
-            <button id='squirtle' onClick={ () => { this.updateUserPokemon('squirtle', this) }}></button>
-            <button id='raichu' onClick={ () => { this.updateUserPokemon('raichu', this) }}></button>
-            <button id='bulbasaur' onClick={ () => { this.updateUserPokemon('bulbasaur', this) }}></button>
-            <button id='onyx' onClick={ () => { this.updateUserPokemon('onyx', this) }}></button>
+            <button id='squirtle' onClick={ () => { this.updateUserPokemon('https://vignette.wikia.nocookie.net/project-pokemon/images/8/85/Squritle.gif/revision/latest?cb=20160721141840', this) }}></button>
+            <button id='pikachu' onClick={ () => { this.updateUserPokemon('https://i.pinimg.com/originals/65/95/7d/65957d802d9046d0d8d9e13ceb3e8e6d.gif', this) }}></button>
+            <button id='bulbasaur' onClick={ () => { this.updateUserPokemon('http://pa1.narvii.com/5707/3ab7eaf896208ff835c71ec323627db336ba222b_00.gif', this) }}></button>
+            <button id='jigglypuff' onClick={ () => { this.updateUserPokemon('https://media.giphy.com/media/fYYVe1rP4oaHe/giphy.gif', this) }}></button>
           </div>
           <Snackbar
             open={this.state.open}

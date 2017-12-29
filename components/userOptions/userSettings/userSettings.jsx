@@ -58,7 +58,7 @@ class userSettings extends Component {
             hintStyle={fieldStyles.colorOrange}
           />
           <FlatButton
-            onClick={this.handleClick}
+            onClick={this.handlePasswordReset}
             label="Reset Password"
           />
           <Snackbar
