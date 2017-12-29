@@ -6,6 +6,7 @@ import Snackbar from 'material-ui/Snackbar';
 import { lchmod } from 'fs';
 import {orange500, deepOrange500 } from 'material-ui/styles/colors';
 import styles from './userSettings.css';
+import axios from 'axios';
 
 // undocked 
 class userSettings extends Component {
@@ -17,6 +18,7 @@ class userSettings extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.updateUserPassword = this.updateUserPassword.bind(this);
   }
 
   handleClick () {
@@ -30,6 +32,27 @@ class userSettings extends Component {
       open: false,
     });
   };
+
+  updateUserPassword (newPassword, newPasswordConfirm, that) {
+    if(newPassword !== newPasswordConfirm) alert('make sure passwords match');
+    else {
+      axios.post('/updateUser', {
+        propertyToUpdate: 'password',
+        newPropertyValue: newPassword,
+        id: that.props.user._id,
+      })
+      .then(function (response) {
+        console.log('RESPONSE IN UPDATE USER PASSWORD', response);
+        // set state of app level user to response.data object
+        that.props.appContext.setState({user: response.data});
+        that.setState({open: true});
+      })
+      .catch(function (error) {
+        console.log(error);
+        console.log('ERROR IN UPDATE USER PASSWORD METHOD');
+      })
+    }
+  }
 
   render() {
     const fieldStyles = {
@@ -58,7 +81,10 @@ class userSettings extends Component {
             hintStyle={fieldStyles.colorOrange}
           />
           <FlatButton
-            onClick={this.handlePasswordReset}
+            onClick={ () => {this.updateUserPassword(
+              document.getElementById("newPasword").value,
+              document.getElementById("newPasswordConfirm").value,
+              this)}}
             label="Reset Password"
           />
           <Snackbar

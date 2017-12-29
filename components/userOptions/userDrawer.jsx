@@ -57,7 +57,7 @@ class userDrawer extends Component {
           onRequestChange={(open) => this.setState({open})}
         >
           <MenuItem onClick={ () => {this.handleLogout()}}>LOG OUT</MenuItem>
-          <UserSettings userDrawerContext={this}></UserSettings>
+          <UserSettings appContext={this.props.appContext} userDrawerContext={this} user={this.props.user}></UserSettings>
           <hr></hr>
           <UserPokemon appContext={this.props.appContext} user={this.props.user}></UserPokemon>
           <hr></hr>
