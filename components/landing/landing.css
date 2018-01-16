@@ -243,41 +243,6 @@ h1{
 	/* margin-right: 40px; */
 }
 
-/* #btn-wrap {
-	padding-top:50px;
-	margin-right: 40px;
-} */
-/* 
-#btn-wrap-second {
-	margin:0 auto;
-	padding-top:50px;
-	margin-right: 40px;
-} */
-
-/* a{
-  background:#e74c3c;
-  color:#FFF;
-  position:relative;
-  padding:15px;
-  font-weight:900 !important;
-  text-transform:uppercase;
-  border-radius:5px;
-  font:14px lato;
-  opacity:0.8;
-  letter-spacing:1px;
-  text-decoration:none;
-	box-shadow:#c0392b 0px 7px 2px,#000 0px 8px 5px;
-}
-
-a:hover{
-  opacitY:1;
-}
-a:active{
-  top:4px;
-  box-shadow:#c0392b 0px 3px 2px,#000 0px 3px 5px;
-} */
-
-
 .landingButtons{
   background:#e74c3c;
   color:#FFF;
