@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import Login from './landing/login.jsx';
 import SignUp from './landing/signUp.jsx';
 import ChatRoom from './chatRoom/chatRoom.jsx';
+import noMatch from './noMatch/noMatch.jsx';
 
 class App extends Component {
   constructor(props, context) {
@@ -24,7 +25,7 @@ class App extends Component {
           <Route exact path="/" render={props => <Login user={this.state.user} appContext={this} {...props} />} />
           <Route path="/signup" render={props => <SignUp user={this.state.user} appContext={this} {...props} />} />
           <Route path="/chatroom" render={props => <ChatRoom user={this.state.user} appContext={this} {...props} />} />
-          <Route component={noMatch}
+          <Route component={noMatch}/>
           {/* <Route exact path="/chatroom" render={props => <ChatRoom user={this.state.user} appContext={this} redirectToLogin={this.state.redirectToLogin} {...props} />} /> */}
         </Switch>
       {/* </Router> */}
