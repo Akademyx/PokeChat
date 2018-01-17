@@ -7,13 +7,20 @@
 	/* background-image:url('https://i.imgur.com/NNoFNWf.png'); */
 	/* background:url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png); */
 	background-size: 100% 100%;
-	margin: auto;
-	position: relative;
+	/* position: relative; */
 	width: 500px;
 	height: 500px;
 	border: 1px rgb(104, 98, 98) solid;
 	box-shadow: 1px 1px 1px 1px #6d6c69;
-	top: 70px;
+	/* top: 70px; */
+
+	position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+	right: 0;
+	margin: auto;
+
 
 	/* -webkit-animation:100s scroll infinite linear;
   -moz-animation:100s scroll infinite linear;
