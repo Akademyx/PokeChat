@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const chatRoomSchema = new Schema({
   roomName: String,
   owner: String,
+  image: String,
   authorizedUsers: [{ name: String, date: Date }],
   messages: [{ name: String, date: Date }]
 });

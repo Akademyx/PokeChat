@@ -7,6 +7,7 @@ let ChatRoomController = {
 		ChatRoom.create({
       roomName: req.body.roomName,
       owner: req.body.owner,
+      image: req.body.image,
       authorizedUsers: req.body.authorizedUsers,
       messages: req.body.messages
 		}, (err, savedDoc) => {
@@ -16,6 +17,7 @@ let ChatRoomController = {
 				res.json({
           roomName: req.body.roomName,
           owner: req.body.owner,
+          image: req.body.image,
           authorizedUsers: req.body.authorizedUsers,
           messages: req.body.messages
 				})
