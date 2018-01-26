@@ -1,4 +1,4 @@
-const ChatRoom = require('../models/message-model');
+const ChatRoom = require('../models/chatroom-model');
 const mongoose = require('mongoose');
 
 let ChatRoomController = {
@@ -24,7 +24,7 @@ let ChatRoomController = {
 			}
 		})
 	},
-	getAllChatrooms(req, res) {
+	getAllChatRooms(req, res) {
     console.log('REQUEST TO GETALLCHATROOMS', req.body);
 		ChatRoom.find({}, function(err, messages) {
 		  res.status(200);

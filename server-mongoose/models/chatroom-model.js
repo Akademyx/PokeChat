@@ -10,6 +10,6 @@ const chatRoomSchema = new Schema({
   messages: [{ name: String, date: Date }]
 });
 
-const User = mongoose.model('User', userSchema); //One document. Naming the columns for it. 
+const ChatRoom = mongoose.model('ChatRoom', chatRoomSchema); //One document. Naming the columns for it. 
 
-module.exports = User;
+module.exports = ChatRoom;
